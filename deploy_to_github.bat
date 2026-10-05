@@ -1,30 +1,36 @@
 @echo off
 chcp 65001 >nul
+title Smart AI Flashcard - Push to GitHub
 echo ========================================================
-echo   🚀 Smart AI Flashcard - Push to GitHub Helper
+echo   🚀 Smart AI Flashcard - กำลัง Push โค้ดขึ้น GitHub
+echo   Repository: https://github.com/phattnachi/smart-ai-flashcard.git
 echo ========================================================
 echo.
-set /p REPO_URL="วางลิงก์ GitHub Repo ที่สร้างไว้ที่นี่ (เช่น https://github.com/username/smart-ai-flashcard.git): "
 
-if "%REPO_URL%"=="" (
-    echo ลิงก์ไม่ถูกต้อง กรุณาลองใหม่อีกครั้ง
-    pause
-    exit /b
+set "PATH=C:\Users\phatt\AppData\Local\Microsoft\WinGet\Packages\Git.MinGit_Microsoft.Winget.Source_8wekyb3d8bbwe\cmd;%PATH%"
+set GIT_EXE=C:\Users\phatt\AppData\Local\Microsoft\WinGet\Packages\Git.MinGit_Microsoft.Winget.Source_8wekyb3d8bbwe\cmd\git.exe
+set GCM_EXE=C:\Users\phatt\AppData\Local\Programs\Git Credential Manager\git-credential-manager.exe
+
+"%GIT_EXE%" config --global credential.helper "%GCM_EXE%"
+"%GIT_EXE%" remote remove origin >nul 2>&1
+"%GIT_EXE%" remote add origin https://github.com/phattnachi/smart-ai-flashcard.git
+
+echo กำลังเชื่อมต่อไปยัง GitHub...
+echo (หากมีหน้าต่างเบราว์เซอร์เด้งขึ้นมา ให้กดยืนยัน Sign in with Browser นะครับ)
+echo.
+
+"%GIT_EXE%" push -u origin main
+
+if %ERRORLEVEL% EQU 0 (
+    echo.
+    echo ========================================================
+    echo   ✅ สำเร็จแล้ว! โค้ดทั้งหมดอยู่บน GitHub เรียบร้อยแล้วครับ
+    echo   ตอนนี้ Vercel จะเริ่มทำการ Deploy ให้อัตโนมัติทันที!
+    echo ========================================================
+) else (
+    echo.
+    echo ❌ เกิดข้อผิดพลาด กรุณาตรวจสอบสิทธิ์การเข้าถึง GitHub
 )
 
-set GIT_CMD="C:\Users\phatt\AppData\Local\Microsoft\WinGet\Packages\Git.MinGit_Microsoft.Winget.Source_8wekyb3d8bbwe\cmd\git.exe"
-
 echo.
-echo กำลังเชื่อมต่อ Remote...
-%GIT_CMD% remote remove origin >nul 2>&1
-%GIT_CMD% remote add origin %REPO_URL%
-
-echo กำลัง Push โค้ดขึ้น GitHub (main branch)...
-%GIT_CMD% push -u origin main
-
-echo.
-echo ========================================================
-echo   ✅ อัปโหลดโค้ดขึ้น GitHub เรียบร้อยแล้ว!
-echo   ขั้นตอนถัดไป: ไปที่ https://vercel.com แล้วกด Import ได้เลย
-echo ========================================================
 pause

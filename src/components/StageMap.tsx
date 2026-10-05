@@ -94,12 +94,12 @@ export const StageMap: React.FC<StageMapProps> = ({
           const stars = stgProg.stars || 0;
           const isCurrentActive = stage.id === activeStageId && isUnlocked;
 
-          // Gentle winding path offsets
+          // Gentle winding path offsets (subtle on mobile to prevent overflow)
           const offsetPositions = [
             'translate-x-0',
-            '-translate-x-10 sm:-translate-x-16',
+            '-translate-x-4 sm:-translate-x-14',
             'translate-x-0',
-            'translate-x-10 sm:translate-x-16',
+            'translate-x-4 sm:translate-x-14',
             'translate-x-0',
           ];
           const offsetClass = offsetPositions[idx % offsetPositions.length];
@@ -113,7 +113,7 @@ export const StageMap: React.FC<StageMapProps> = ({
               <button
                 disabled={!isUnlocked}
                 onClick={() => onSelectStage(stage)}
-                className={`relative flex flex-col items-center justify-center w-24 h-24 sm:w-28 sm:h-28 rounded-3xl border-3 shadow-md transition-all duration-300 group ${
+                className={`relative flex flex-col items-center justify-center w-20 h-20 sm:w-28 sm:h-28 rounded-2xl sm:rounded-3xl border-3 shadow-md transition-all duration-300 group ${
                   isUnlocked
                     ? 'bg-white border-amber-300 hover:border-amber-400 hover:scale-110 active:scale-95 cursor-pointer shadow-amber-100 hover:shadow-xl'
                     : 'bg-slate-100 border-slate-300 opacity-60 cursor-not-allowed shadow-none'

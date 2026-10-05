@@ -421,16 +421,16 @@ export default function HomePage() {
       />
 
       {/* Main Content Area */}
-      <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-6">
+      <main className="flex-1 max-w-7xl w-full mx-auto px-3.5 sm:px-6 lg:px-8 py-3.5 sm:py-6 space-y-4 sm:space-y-6 pb-28 sm:pb-12">
         {/* Top Hero: Kid Friendly Header (hidden on dedicated Settings tab) */}
         {activeTab !== 'settings' && (
-          <section className="text-center space-y-2.5 pt-2 pb-1">
-            <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-100 border-2 border-amber-300 text-xs font-black text-amber-900 shadow-2xs">
-              <span className="text-base animate-bounce-gentle">🎈</span>
+          <section className="text-center space-y-2 pt-1 pb-1 sm:space-y-2.5 sm:pt-2 sm:pb-1">
+            <div className="inline-flex items-center gap-1.5 px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-amber-100 border-2 border-amber-300 text-[11px] sm:text-xs font-black text-amber-900 shadow-2xs">
+              <span className="text-sm sm:text-base animate-bounce-gentle">🎈</span>
               <span>ดินแดนคำศัพท์หรรษา • เหมาะสำหรับเด็ก 5-6 ขวบ 🌟</span>
             </div>
 
-            <h1 className="text-3xl sm:text-5xl font-black tracking-tight text-slate-900">
+            <h1 className="text-2xl sm:text-5xl font-black tracking-tight text-slate-900 leading-tight">
               เรียนรู้คำศัพท์ภาษาอังกฤษแสนสนุกกับ{' '}
               <span className="bg-gradient-to-r from-amber-500 via-pink-500 to-indigo-600 bg-clip-text text-transparent">
                 SmartAI Kids
@@ -438,31 +438,31 @@ export default function HomePage() {
               🧸🎨
             </h1>
 
-            <p className="text-sm sm:text-base text-slate-600 max-w-2xl mx-auto font-medium leading-relaxed">
+            <p className="text-xs sm:text-base text-slate-600 max-w-2xl mx-auto font-medium leading-relaxed px-2">
               ฟังเสียงพี่เจ้าของภาษา 🔊 พูดตามพี่ AI คนเก่ง 🎤 และสะสมดาว 3 ดวงผ่านด่านกันเถอะ! ✨
             </p>
 
             {/* Web Speech Status Badges */}
-            <div className="flex flex-wrap items-center justify-center gap-2.5 pt-1 text-xs font-bold">
+            <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2.5 pt-0.5 text-[11px] sm:text-xs font-bold">
               <span
-                className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl border ${
+                className={`inline-flex items-center gap-1 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-xl border ${
                   ttsSupported
                     ? 'bg-emerald-50 text-emerald-800 border-emerald-300'
                     : 'bg-amber-50 text-amber-800 border-amber-300'
                 }`}
               >
-                <Volume2 className="w-4 h-4 text-emerald-600" />
-                <span>🔊 เสียงอ่านเจ้าของภาษา: พร้อมแล้วจ้า</span>
+                <Volume2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                <span>🔊 เสียงอ่านเจ้าของภาษา: พร้อมแล้ว</span>
               </span>
 
               <span
-                className={`inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl border ${
+                className={`inline-flex items-center gap-1 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-xl border ${
                   sttSupported
                     ? 'bg-sky-50 text-sky-800 border-sky-300'
                     : 'bg-amber-50 text-amber-800 border-amber-300'
                 }`}
               >
-                <Mic className="w-4 h-4 text-sky-600" />
+                <Mic className="w-3.5 h-3.5 text-sky-600 shrink-0" />
                 <span>🎤 ไมค์ฝึกพูดกับ AI: พร้อมฟังคนเก่ง</span>
               </span>
             </div>

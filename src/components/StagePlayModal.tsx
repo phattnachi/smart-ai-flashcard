@@ -249,29 +249,29 @@ export const StagePlayModal: React.FC<StagePlayModalProps> = ({
   const displayStars = Math.min(3, Math.max(currentStars, calculatedStars, cardsStarsEarned, earnedStars));
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/40 backdrop-blur-xs animate-in fade-in duration-200">
-      <div className="relative w-full max-w-2xl bg-white border-3 border-amber-300 rounded-3xl shadow-2xl p-5 sm:p-7 text-slate-800 max-h-[92vh] overflow-y-auto">
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-slate-900/50 backdrop-blur-xs animate-in fade-in duration-200">
+      <div className="relative w-full max-w-2xl bg-white border-t-4 sm:border-3 border-amber-300 rounded-t-3xl sm:rounded-3xl shadow-2xl p-4 sm:p-7 text-slate-800 h-[94vh] sm:h-auto sm:max-h-[92vh] overflow-y-auto">
         {/* Header */}
-        <div className="flex items-center justify-between pb-3.5 border-b-2 border-amber-100">
-          <div className="flex items-center gap-3">
-            <div className="w-12 h-12 rounded-2xl bg-amber-100 border-2 border-amber-300 flex items-center justify-center text-2xl shrink-0 shadow-xs animate-bounce-gentle">
+        <div className="flex items-center justify-between pb-3 border-b-2 border-amber-100 gap-2">
+          <div className="flex items-center gap-2.5 sm:gap-3 min-w-0">
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-amber-100 border-2 border-amber-300 flex items-center justify-center text-xl sm:text-2xl shrink-0 shadow-xs animate-bounce-gentle">
               {stage.icon}
             </div>
-            <div>
-              <h3 className="text-base sm:text-lg font-black text-slate-900 flex items-center gap-2">
-                <span>{stage.title}</span>
+            <div className="min-w-0">
+              <h3 className="text-sm sm:text-lg font-black text-slate-900 truncate">
+                {stage.title}
               </h3>
-              <p className="text-xs text-amber-800 font-bold">{stage.subtitle}</p>
+              <p className="text-[11px] sm:text-xs text-amber-800 font-bold truncate">{stage.subtitle}</p>
             </div>
           </div>
 
-          <div className="flex items-center gap-2 sm:gap-2.5">
+          <div className="flex items-center gap-1.5 sm:gap-2.5 shrink-0">
             {/* Stars badge */}
-            <div className="flex items-center gap-1 bg-amber-100 px-3 py-1 rounded-2xl border border-amber-300">
+            <div className="flex items-center gap-0.5 sm:gap-1 bg-amber-100 px-2 sm:px-3 py-1 rounded-2xl border border-amber-300">
               {[1, 2, 3].map((s) => (
                 <Star
                   key={s}
-                  className={`w-4 h-4 transition-transform ${
+                  className={`w-3.5 h-3.5 sm:w-4 sm:h-4 transition-transform ${
                     s <= displayStars
                       ? 'text-amber-500 fill-amber-400 scale-110'
                       : 'text-slate-300 fill-slate-100'
@@ -283,16 +283,16 @@ export const StagePlayModal: React.FC<StagePlayModalProps> = ({
             {/* Restart Button in Header */}
             <button
               onClick={handleRestartCurrent}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-amber-100 hover:bg-amber-200 text-amber-950 border border-amber-300 font-black text-xs transition-all hover:scale-105 active:scale-95 shadow-2xs cursor-pointer"
+              className="flex items-center gap-1 px-2.5 sm:px-3 py-1.5 rounded-xl bg-amber-100 hover:bg-amber-200 text-amber-950 border border-amber-300 font-black text-xs transition-all hover:scale-105 active:scale-95 shadow-2xs cursor-pointer"
               title="เริ่มด่านนี้ใหม่อีกครั้ง"
             >
               <RotateCcw className="w-3.5 h-3.5 text-amber-800" />
-              <span>เริ่มใหม่</span>
+              <span className="hidden sm:inline">เริ่มใหม่</span>
             </button>
 
             <button
               onClick={onClose}
-              className="p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-amber-50 transition-colors cursor-pointer"
+              className="p-1.5 sm:p-2 rounded-xl text-slate-400 hover:text-slate-700 hover:bg-amber-50 transition-colors cursor-pointer"
               title="ปิดหน้าต่าง"
             >
               <X className="w-5 h-5" />
@@ -301,33 +301,33 @@ export const StagePlayModal: React.FC<StagePlayModalProps> = ({
         </div>
 
         {/* Mode Switcher */}
-        <div className="flex items-center justify-center gap-2.5 my-4">
+        <div className="grid grid-cols-2 gap-2 sm:gap-2.5 my-3 sm:my-4">
           <button
             onClick={() => {
               setActiveMode('learn');
               setIsCardsFinished(false);
             }}
-            className={`flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-2xl font-black text-xs sm:text-sm transition-all border-2 ${
+            className={`flex items-center justify-center gap-1.5 px-2.5 sm:px-5 py-2.5 rounded-2xl font-black text-xs sm:text-sm transition-all border-2 text-center select-none active:scale-95 ${
               activeMode === 'learn'
                 ? 'bg-amber-400 text-amber-950 border-amber-400 shadow-md shadow-amber-200 scale-102'
                 : 'bg-white text-slate-700 border-amber-200 hover:bg-amber-50'
             }`}
           >
-            <BookOpen className="w-4 h-4 text-amber-700" />
-            <span>1. 📖 แฟลชการ์ด (2 ดาว) ⭐⭐</span>
+            <BookOpen className="w-4 h-4 text-amber-700 shrink-0" />
+            <span>1. 📖 แฟลชการ์ด (2⭐)</span>
             {isCardsStageDone && <span className="text-xs">✅</span>}
           </button>
 
           <button
             onClick={handleStartQuiz}
-            className={`flex items-center gap-2 px-4 sm:px-5 py-2.5 rounded-2xl font-black text-xs sm:text-sm transition-all border-2 ${
+            className={`flex items-center justify-center gap-1.5 px-2.5 sm:px-5 py-2.5 rounded-2xl font-black text-xs sm:text-sm transition-all border-2 text-center select-none active:scale-95 ${
               activeMode === 'quiz'
                 ? 'bg-pink-500 text-white border-pink-500 shadow-md shadow-pink-200 scale-102'
                 : 'bg-white text-slate-700 border-pink-200 hover:bg-pink-50'
             }`}
           >
-            <Star className="w-4 h-4 fill-amber-400 text-amber-400" />
-            <span>2. 🎯 เกมทายคำ (1 ดาว) ⭐</span>
+            <Star className="w-4 h-4 fill-amber-400 text-amber-400 shrink-0" />
+            <span>2. 🎯 เกมทายคำ (1⭐)</span>
             {isQuizStageDone && <span className="text-xs">✅</span>}
           </button>
         </div>
@@ -479,75 +479,81 @@ export const StagePlayModal: React.FC<StagePlayModalProps> = ({
                   isMicPracticed={isCurrentCardSpoken}
                 />
 
-                {/* Stepper controls */}
-                <div className="flex items-center justify-between pt-1">
-                  <div className="flex items-center gap-2">
+                {/* Stepper controls (Responsive for mobile thumbs) */}
+                <div className="space-y-2 pt-2">
+                  <div className="flex items-center justify-between gap-2">
                     <button
                       disabled={cardIndex === 0}
                       onClick={() => {
                         setIsFlipped(false);
                         setCardIndex((prev) => Math.max(0, prev - 1));
                       }}
-                      className="px-4 py-2 rounded-2xl bg-amber-100 hover:bg-amber-200 text-amber-900 font-black text-xs border border-amber-300 disabled:opacity-40 cursor-pointer"
+                      className="px-3.5 sm:px-4 py-2 rounded-2xl bg-amber-100 hover:bg-amber-200 text-amber-900 font-black text-xs border border-amber-300 disabled:opacity-40 cursor-pointer min-h-[42px] flex items-center justify-center active:scale-95 transition-all"
                     >
                       ◀ คำก่อนหน้า
                     </button>
 
-                    {cardIndex > 0 && (
+                    <div className="flex items-center gap-1.5">
+                      <span className="text-xs font-black text-amber-800 bg-amber-50 px-3 py-1.5 rounded-xl border border-amber-200">
+                        คำที่ {cardIndex + 1} / {stage.cards.length}
+                      </span>
+                      {cardIndex > 0 && (
+                        <button
+                          onClick={handleRestartCards}
+                          className="p-2 rounded-xl bg-amber-50 hover:bg-amber-100 text-amber-800 border border-amber-200 cursor-pointer transition-all active:scale-95 shadow-2xs"
+                          title="เริ่มใหม่ตั้งแต่คำแรก"
+                        >
+                          <RotateCcw className="w-3.5 h-3.5 text-amber-700" />
+                        </button>
+                      )}
+                    </div>
+
+                    {cardIndex < stage.cards.length - 1 ? (
                       <button
-                        onClick={handleRestartCards}
-                        className="px-3 py-2 rounded-2xl bg-amber-50 hover:bg-amber-100 text-amber-800 font-black text-xs border border-amber-200 flex items-center gap-1 cursor-pointer transition-all hover:scale-105 active:scale-95 shadow-2xs"
-                        title="เริ่มใหม่ตั้งแต่คำแรก"
+                        onClick={() => {
+                          setIsFlipped(false);
+                          setCardIndex((prev) => prev + 1);
+                        }}
+                        className="px-4 sm:px-5 py-2 rounded-2xl bg-gradient-to-r from-amber-400 to-pink-500 hover:from-amber-500 hover:to-pink-600 text-white font-black text-xs shadow-xs cursor-pointer active:scale-95 transition-all min-h-[42px] flex items-center justify-center"
                       >
-                        <RotateCcw className="w-3.5 h-3.5 text-amber-700" />
-                        <span>เริ่มใหม่</span>
+                        คำถัดไป ▶
+                      </button>
+                    ) : allCardsSpoken ? (
+                      <button
+                        onClick={handleFinishFlashcards}
+                        className="px-3 sm:px-5 py-2 rounded-2xl bg-gradient-to-r from-amber-400 via-orange-400 to-pink-500 hover:from-amber-500 hover:to-pink-600 text-white font-black text-xs shadow-md flex items-center gap-1.5 animate-bounce-gentle active:scale-95 transition-all cursor-pointer ring-2 ring-amber-300 min-h-[42px]"
+                      >
+                        <Star className="w-3.5 h-3.5 fill-yellow-200 text-yellow-200" />
+                        <span>รับ 2 ดาว ⭐⭐</span>
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => handleOpenMicWrapper(currentCard)}
+                        className="px-3 py-2 rounded-2xl bg-pink-100 hover:bg-pink-200 text-pink-900 border-2 border-pink-300 font-black text-xs flex items-center gap-1 cursor-pointer min-h-[42px]"
+                      >
+                        <Mic className="w-3.5 h-3.5 text-pink-600" />
+                        <span>ฝึกพูด 🎙️</span>
                       </button>
                     )}
                   </div>
 
-                  <span className="text-xs font-black text-amber-800">
-                    คำที่ {cardIndex + 1} จาก {stage.cards.length}
-                  </span>
-
-                  {cardIndex < stage.cards.length - 1 ? (
+                  {/* On last card and not all spoken: wide help banner */}
+                  {cardIndex === stage.cards.length - 1 && !allCardsSpoken && (
                     <button
                       onClick={() => {
-                        setIsFlipped(false);
-                        setCardIndex((prev) => prev + 1);
-                      }}
-                      className="px-5 py-2 rounded-2xl bg-gradient-to-r from-amber-400 to-pink-500 hover:from-amber-500 hover:to-pink-600 text-white font-black text-xs shadow-xs cursor-pointer hover:scale-105 active:scale-95 transition-all"
-                    >
-                      คำถัดไป ▶
-                    </button>
-                  ) : allCardsSpoken ? (
-                    <button
-                      onClick={handleFinishFlashcards}
-                      className="px-5 py-2.5 rounded-2xl bg-gradient-to-r from-amber-400 via-orange-400 to-pink-500 hover:from-amber-500 hover:to-pink-600 text-white font-black text-xs shadow-md flex items-center gap-2 animate-bounce-gentle hover:scale-105 active:scale-95 transition-all cursor-pointer ring-2 ring-amber-300"
-                    >
-                      <Star className="w-4 h-4 fill-yellow-200 text-yellow-200" />
-                      <span>🎉 ออกเสียงครบทุกคำแล้ว! รับ 2 ดาว ⭐⭐</span>
-                    </button>
-                  ) : (
-                    <button
-                      onClick={() => {
-                        if (!isCurrentCardSpoken) {
-                          handleOpenMicWrapper(currentCard);
-                        } else {
-                          const firstUnspokenIdx = stage.cards.findIndex(
-                            (c) => !spokenCardIds.has(c.id)
-                          );
-                          if (firstUnspokenIdx !== -1) {
-                            setIsFlipped(false);
-                            setCardIndex(firstUnspokenIdx);
-                            onOpenMic(stage.cards[firstUnspokenIdx]);
-                          }
+                        const firstUnspokenIdx = stage.cards.findIndex(
+                          (c) => !spokenCardIds.has(c.id)
+                        );
+                        if (firstUnspokenIdx !== -1) {
+                          setIsFlipped(false);
+                          setCardIndex(firstUnspokenIdx);
+                          onOpenMic(stage.cards[firstUnspokenIdx]);
                         }
                       }}
-                      className="px-4 py-2.5 rounded-2xl bg-pink-100 hover:bg-pink-200 text-pink-900 border-2 border-pink-300 font-black text-xs flex items-center gap-1.5 cursor-pointer transition-all hover:scale-102"
-                      title="ต้องออกเสียงให้ถูกต้องครบทุกคำก่อนนะจ๊ะ"
+                      className="w-full p-2.5 rounded-2xl bg-pink-50 hover:bg-pink-100 text-pink-900 border-2 border-pink-200 font-black text-xs flex items-center justify-center gap-1.5 cursor-pointer transition-all active:scale-98"
                     >
                       <Mic className="w-4 h-4 text-pink-600" />
-                      <span>พูดถูกต้องแล้ว {spokenCardsCount}/{stage.cards.length} คำ (แตะเพื่อฝึกพูดคำที่เหลือ 🎙️)</span>
+                      <span>พูดถูกต้องแล้ว {spokenCardsCount}/{stage.cards.length} คำ (แตะตรงนี้เพื่อฝึกคำที่เหลือ 🎙️)</span>
                     </button>
                   )}
                 </div>

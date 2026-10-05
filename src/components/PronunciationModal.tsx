@@ -95,19 +95,19 @@ export const PronunciationModal: React.FC<PronunciationModalProps> = ({
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/40 backdrop-blur-xs animate-in fade-in duration-200">
-      <div className="relative w-full max-w-lg bg-white border-3 border-pink-300 rounded-3xl shadow-2xl p-6 sm:p-7 text-slate-800 overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 bg-slate-900/50 backdrop-blur-xs animate-in fade-in duration-200">
+      <div className="relative w-full max-w-lg bg-white border-t-4 sm:border-3 border-pink-300 rounded-t-3xl sm:rounded-3xl shadow-2xl p-4 sm:p-7 text-slate-800 max-h-[92vh] overflow-y-auto">
         {/* Header */}
-        <div className="flex items-center justify-between pb-3.5 border-b-2 border-pink-100">
-          <div className="flex items-center gap-2.5">
-            <span className="p-2.5 rounded-2xl bg-pink-100 text-pink-600 border border-pink-300">
-              <Mic className="w-5 h-5" />
+        <div className="flex items-center justify-between pb-3 border-b-2 border-pink-100 gap-2">
+          <div className="flex items-center gap-2">
+            <span className="p-2 sm:p-2.5 rounded-2xl bg-pink-100 text-pink-600 border border-pink-300 shrink-0">
+              <Mic className="w-4 h-4 sm:w-5 sm:h-5" />
             </span>
-            <div>
-              <h3 className="text-base sm:text-lg font-black text-slate-900 flex items-center gap-1.5">
-                <span>🎤 มาฝึกพูดกับพี่ AI กันเถอะ!</span>
+            <div className="min-w-0">
+              <h3 className="text-sm sm:text-lg font-black text-slate-900 truncate">
+                🎤 มาฝึกพูดกับพี่ AI กันเถอะ!
               </h3>
-              <p className="text-xs text-pink-800 font-bold">พูดคำศัพท์ตามเสียง แล้วมาดูกันว่าออกเสียงเก่งแค่ไหนนะ</p>
+              <p className="text-[11px] sm:text-xs text-pink-800 font-bold truncate">พูดคำศัพท์ตามเสียง แล้วมาลุ้นคะแนนกันนะ</p>
             </div>
           </div>
           <button
@@ -115,33 +115,33 @@ export const PronunciationModal: React.FC<PronunciationModalProps> = ({
               confetti.reset();
               onClose();
             }}
-            className="p-2 rounded-xl text-slate-400 hover:text-slate-600 hover:bg-pink-50 transition-colors cursor-pointer"
+            className="p-1.5 sm:p-2 rounded-xl text-slate-400 hover:text-slate-600 hover:bg-pink-50 transition-colors cursor-pointer shrink-0"
           >
             <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Target word section */}
-        <div className="my-5 text-center space-y-2">
-          <span className="text-xs font-black px-3.5 py-1 rounded-full bg-amber-100 text-amber-900 border border-amber-300">
+        <div className="my-3 sm:my-5 text-center space-y-1.5 sm:space-y-2">
+          <span className="text-[10px] sm:text-xs font-black px-3 sm:px-3.5 py-0.5 sm:py-1 rounded-full bg-amber-100 text-amber-900 border border-amber-300">
             🏷️ {card.category} • {card.partOfSpeech}
           </span>
-          <h2 className="text-4xl sm:text-5xl font-black text-slate-900 tracking-tight drop-shadow-2xs">
+          <h2 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight drop-shadow-2xs">
             {card.word}
           </h2>
-          <div className="flex items-center justify-center gap-2">
-            <span className="text-base font-mono font-bold text-sky-700 bg-sky-50 px-3 py-0.5 rounded-xl border border-sky-200">
+          <div className="flex items-center justify-center gap-1.5 sm:gap-2">
+            <span className="text-sm sm:text-base font-mono font-bold text-sky-700 bg-sky-50 px-2.5 sm:px-3 py-0.5 rounded-xl border border-sky-200">
               {card.phonetic}
             </span>
             <button
               onClick={onPlayTargetWord}
-              className="p-2 rounded-xl bg-sky-100 hover:bg-sky-200 text-sky-700 transition-colors border border-sky-300"
+              className="p-1.5 sm:p-2 rounded-xl bg-sky-100 hover:bg-sky-200 text-sky-700 transition-colors border border-sky-300"
               title="ฟังเสียงต้นแบบพี่เจ้าของภาษา"
             >
               <Volume2 className="w-4 h-4" />
             </button>
           </div>
-          <p className="text-sm font-black text-amber-900">
+          <p className="text-xs sm:text-sm font-black text-amber-900">
             แปลว่า: {card.thaiMeaning}
           </p>
         </div>
