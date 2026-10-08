@@ -4,8 +4,7 @@ import React, { useState, useEffect, useMemo, useCallback } from 'react';
 import { Navbar, TabType } from '@/components/Navbar';
 import { StageMap } from '@/components/StageMap';
 import { StagePlayModal } from '@/components/StagePlayModal';
-import { CategoryFilter } from '@/components/CategoryFilter';
-import { FlashcardDeck } from '@/components/FlashcardDeck';
+import { FlashcardGridView } from '@/components/FlashcardGridView';
 import { QuizContainer } from '@/components/QuizContainer';
 import { StatsOverview } from '@/components/StatsOverview';
 import { SettingsView } from '@/components/SettingsView';
@@ -433,7 +432,7 @@ export default function HomePage() {
       {/* Main Content Area */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-3.5 sm:px-6 lg:px-8 py-3.5 sm:py-6 space-y-4 sm:space-y-6 pb-28 sm:pb-12">
         {/* Top Hero: Kid Friendly Header (Streamlined on Home, Collapsed on other tabs per HCI Ergonomics) */}
-        {activeTab !== 'settings' && (
+        {activeTab !== 'settings' && activeTab !== 'flashcards' && (
           activeTab === 'stages' ? (
             // ==================== HOME / STAGES: Streamlined Welcoming Banner ====================
             <section className="text-center space-y-1.5 sm:space-y-2 pt-1 pb-1 transition-all duration-300">
@@ -494,18 +493,16 @@ export default function HomePage() {
               )}
             </section>
           ) : (
-            // ==================== OTHER TABS (Flashcards, Quiz, Stats): Sleek Compact Mini-Header ====================
+            // ==================== OTHER TABS (Quiz, Stats): Sleek Compact Mini-Header ====================
             <section className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-2xl bg-white/90 backdrop-blur-xs border-2 border-amber-200 shadow-2xs">
               <div className="flex items-center gap-2.5">
                 <span className="text-xl sm:text-2xl">
-                  {activeTab === 'flashcards' ? '🗂️' : activeTab === 'quiz' ? '🎯' : '🏆'}
+                  {activeTab === 'quiz' ? '🎯' : '🏆'}
                 </span>
                 <div>
                   <h2 className="text-xs sm:text-sm font-black text-slate-900 flex items-center gap-1.5">
                     <span>
-                      {activeTab === 'flashcards'
-                        ? `คลังการ์ดคำศัพท์สำหรับเด็ก (${cards.length} คำ)`
-                        : activeTab === 'quiz'
+                      {activeTab === 'quiz'
                         ? 'เกมทายคำศัพท์แสนสนุก'
                         : 'ถ้วยรางวัลและความสำเร็จของคนเก่ง'}
                     </span>
@@ -514,9 +511,7 @@ export default function HomePage() {
                     </span>
                   </h2>
                   <p className="text-[11px] text-slate-500 font-medium">
-                    {activeTab === 'flashcards'
-                      ? 'แตะที่การ์ดเพื่อพลิกดูความหมาย หรือกดไอคอนไมค์เพื่อฝึกออกเสียงกับ AI'
-                      : activeTab === 'quiz'
+                    {activeTab === 'quiz'
                       ? 'ฟังเสียงคำศัพท์และเลือกความหมายที่ถูกต้องเพื่อสะสมคะแนน'
                       : `สะสมดาวได้แล้ว ${totalStars}/15 ดวง และการ์ดที่ออกเสียงถูกต้อง ${spokenCardIds.size} คำ`}
                   </p>
@@ -547,30 +542,26 @@ export default function HomePage() {
           />
         )}
 
-        {/* ==================== VIEW 2: ALL FLASHCARDS (คลังการ์ดทั้งหมด) ==================== */}
+        {/* ==================== VIEW 2: ALL FLASHCARDS (คลังการ์ดทั้งหมดแบบ Grid) ==================== */}
         {activeTab === 'flashcards' && (
-          <div className="space-y-6">
-            <CategoryFilter
-              selectedCategory={selectedCategory}
-              onSelectCategory={setSelectedCategory}
-              searchQuery={searchQuery}
-              onSearchChange={setSearchQuery}
-              categoryCounts={categoryCounts}
-              masteredCount={masteredIds.size}
-              totalCards={cards.length}
-            />
-
-            <FlashcardDeck
-              cards={filteredCards}
-              onPlayWordAudio={handlePlayWordAudio}
-              onPlayWordAudioSlow={handlePlayWordAudioSlow}
-              onPlaySentenceAudio={handlePlaySentenceAudio}
-              onOpenMic={handleOpenMic}
-              isSpeaking={isSpeaking}
-              masteredIds={masteredIds}
-              onToggleMastered={handleToggleMastered}
-            />
-          </div>
+          <FlashcardGridView
+            cards={filteredCards}
+            allCards={cards}
+            selectedCategory={selectedCategory}
+            onSelectCategory={setSelectedCategory}
+            searchQuery={searchQuery}
+            onSearchChange={setSearchQuery}
+            categoryCounts={categoryCounts}
+            masteredCount={masteredIds.size}
+            onPlayWordAudio={handlePlayWordAudio}
+            onPlayWordAudioSlow={handlePlayWordAudioSlow}
+            onPlaySentenceAudio={handlePlaySentenceAudio}
+            onOpenMic={handleOpenMic}
+            isSpeaking={isSpeaking}
+            masteredIds={masteredIds}
+            onToggleMastered={handleToggleMastered}
+            onOpenAIGenerator={() => setIsAIGeneratorOpen(true)}
+          />
         )}
 
         {/* ==================== VIEW 3: FREE QUIZ (เกมทายคำอิสระ) ==================== */}
