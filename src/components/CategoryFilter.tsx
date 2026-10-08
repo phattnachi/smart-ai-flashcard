@@ -20,10 +20,10 @@ interface CategoryFilterProps {
 const kidCategoryIcons: Record<string, string> = {
   All: '🌟',
   Animals: '🐶',
-  'Fruits & Food': '🍎',
-  'Daily Conversation': '💬',
-  'Travel & Places': '✈️',
-  'Feelings & Personality': '😊',
+  'School & Objects': '🎒',
+  'Fruits & Colors': '🍎',
+  Nature: '☀️',
+  'Feelings & Daily': '😊',
 };
 
 export const CategoryFilter: React.FC<CategoryFilterProps> = ({

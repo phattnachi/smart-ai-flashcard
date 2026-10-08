@@ -29,12 +29,12 @@ import {
   CheckCircle2,
 } from 'lucide-react';
 
-const STORAGE_KEY_CARDS = 'smart_ai_cards_easy_v2';
-const STORAGE_KEY_MASTERED = 'smart_ai_mastered_easy_v2';
-const STORAGE_KEY_STAGES = 'smart_ai_stage_progress_easy_v2';
-const STORAGE_KEY_SPOKEN = 'smart_ai_spoken_correct_v2';
-const STORAGE_KEY_THRESHOLD = 'smart_ai_pronunciation_threshold_v2';
-const STORAGE_KEY_HINTS = 'smart_ai_show_hints_v2';
+const STORAGE_KEY_CARDS = 'smart_ai_cards_kids_v3';
+const STORAGE_KEY_MASTERED = 'smart_ai_mastered_kids_v3';
+const STORAGE_KEY_STAGES = 'smart_ai_stage_progress_kids_v3';
+const STORAGE_KEY_SPOKEN = 'smart_ai_spoken_correct_v3';
+const STORAGE_KEY_THRESHOLD = 'smart_ai_pronunciation_threshold_v3';
+const STORAGE_KEY_HINTS = 'smart_ai_show_hints_v3';
 
 // Normalizes stage progression ensuring Stage N requires at least 2 stars in Stage N-1 to unlock
 const normalizeStageProgress = (prog: Record<number, StageProgress>): Record<number, StageProgress> => {
@@ -79,6 +79,7 @@ export default function HomePage() {
   const [activeTab, setActiveTab] = useState<TabType>('stages');
   const [pronunciationThreshold, setPronunciationThreshold] = useState<number>(65);
   const [showHints, setShowHints] = useState<boolean>(true);
+  const [isHeroCollapsed, setIsHeroCollapsed] = useState<boolean>(false);
 
   // Stages & 3-Star Progression
   const [stageProgress, setStageProgress] = useState<Record<number, StageProgress>>(createInitialStageProgress);
@@ -122,9 +123,18 @@ export default function HomePage() {
         const savedCards = localStorage.getItem(STORAGE_KEY_CARDS);
         if (savedCards) {
           const parsed = JSON.parse(savedCards);
-          if (Array.isArray(parsed) && parsed.length > 0) {
+          const hasOldAdultWords = Array.isArray(parsed) && parsed.some(
+            (c: Flashcard) => ['Initiative', 'Airport', 'Station', 'Passport', 'Excuse me'].includes(c.word)
+          );
+          if (Array.isArray(parsed) && parsed.length > 0 && !hasOldAdultWords) {
             setCards(parsed);
+          } else {
+            setCards(INITIAL_FLASHCARDS);
+            localStorage.setItem(STORAGE_KEY_CARDS, JSON.stringify(INITIAL_FLASHCARDS));
           }
+        } else {
+          setCards(INITIAL_FLASHCARDS);
+          localStorage.setItem(STORAGE_KEY_CARDS, JSON.stringify(INITIAL_FLASHCARDS));
         }
 
         const savedMastered = localStorage.getItem(STORAGE_KEY_MASTERED);
@@ -422,51 +432,110 @@ export default function HomePage() {
 
       {/* Main Content Area */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-3.5 sm:px-6 lg:px-8 py-3.5 sm:py-6 space-y-4 sm:space-y-6 pb-28 sm:pb-12">
-        {/* Top Hero: Kid Friendly Header (hidden on dedicated Settings tab) */}
+        {/* Top Hero: Kid Friendly Header (Streamlined on Home, Collapsed on other tabs per HCI Ergonomics) */}
         {activeTab !== 'settings' && (
-          <section className="text-center space-y-2 pt-1 pb-1 sm:space-y-2.5 sm:pt-2 sm:pb-1">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 sm:px-4 sm:py-1.5 rounded-full bg-amber-100 border-2 border-amber-300 text-[11px] sm:text-xs font-black text-amber-900 shadow-2xs">
-              <span className="text-sm sm:text-base animate-bounce-gentle">🎈</span>
-              <span>ดินแดนคำศัพท์หรรษา • เหมาะสำหรับเด็ก 5-6 ขวบ 🌟</span>
-            </div>
+          activeTab === 'stages' ? (
+            // ==================== HOME / STAGES: Streamlined Welcoming Banner ====================
+            <section className="text-center space-y-1.5 sm:space-y-2 pt-1 pb-1 transition-all duration-300">
+              <div className="flex items-center justify-center gap-2">
+                <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-amber-100 border-2 border-amber-300 text-[11px] sm:text-xs font-black text-amber-900 shadow-2xs">
+                  <span className="text-sm animate-bounce-gentle">🎈</span>
+                  <span>ดินแดนคำศัพท์หรรษา • เหมาะสำหรับเด็ก 5-6 ขวบ 🌟</span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setIsHeroCollapsed(!isHeroCollapsed)}
+                  className="text-[11px] font-bold text-amber-800 hover:text-amber-950 px-2.5 py-0.5 rounded-full bg-amber-100/80 hover:bg-amber-200 border border-amber-300 transition-colors cursor-pointer"
+                  title={isHeroCollapsed ? 'ขยายแบนเนอร์' : 'ยุบแบนเนอร์เพื่อเพิ่มพื้นที่จอ'}
+                >
+                  {isHeroCollapsed ? '🔽 ขยายคำแนะนำ' : '🔼 ยุบแบนเนอร์'}
+                </button>
+              </div>
 
-            <h1 className="text-2xl sm:text-5xl font-black tracking-tight text-slate-900 leading-tight">
-              เรียนรู้คำศัพท์ภาษาอังกฤษแสนสนุกกับ{' '}
-              <span className="bg-gradient-to-r from-amber-500 via-pink-500 to-indigo-600 bg-clip-text text-transparent">
-                SmartAI Kids
-              </span>{' '}
-              🧸🎨
-            </h1>
+              {!isHeroCollapsed && (
+                <>
+                  <h1 className="text-xl sm:text-3xl lg:text-4xl font-black tracking-tight text-slate-900 leading-tight">
+                    เรียนรู้คำศัพท์ภาษาอังกฤษแสนสนุกกับ{' '}
+                    <span className="bg-gradient-to-r from-amber-500 via-pink-500 to-indigo-600 bg-clip-text text-transparent">
+                      SmartAI Kids
+                    </span>{' '}
+                    🧸🎨
+                  </h1>
 
-            <p className="text-xs sm:text-base text-slate-600 max-w-2xl mx-auto font-medium leading-relaxed px-2">
-              ฟังเสียงพี่เจ้าของภาษา 🔊 พูดตามพี่ AI คนเก่ง 🎤 และสะสมดาว 3 ดวงผ่านด่านกันเถอะ! ✨
-            </p>
+                  <p className="text-xs sm:text-sm text-slate-600 max-w-xl mx-auto font-medium leading-relaxed px-2">
+                    ฟังเสียงพี่เจ้าของภาษา 🔊 พูดตามพี่ AI คนเก่ง 🎤 และสะสมดาว 3 ดวงผ่านด่านกันเถอะ! ✨
+                  </p>
 
-            {/* Web Speech Status Badges */}
-            <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2.5 pt-0.5 text-[11px] sm:text-xs font-bold">
-              <span
-                className={`inline-flex items-center gap-1 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-xl border ${
-                  ttsSupported
-                    ? 'bg-emerald-50 text-emerald-800 border-emerald-300'
-                    : 'bg-amber-50 text-amber-800 border-amber-300'
-                }`}
-              >
-                <Volume2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
-                <span>🔊 เสียงอ่านเจ้าของภาษา: พร้อมแล้ว</span>
-              </span>
+                  {/* Web Speech Status Badges */}
+                  <div className="flex flex-wrap items-center justify-center gap-1.5 sm:gap-2 pt-0.5 text-[11px] sm:text-xs font-bold">
+                    <span
+                      className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-xl border ${
+                        ttsSupported
+                          ? 'bg-emerald-50 text-emerald-800 border-emerald-300'
+                          : 'bg-amber-50 text-amber-800 border-amber-300'
+                      }`}
+                    >
+                      <Volume2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                      <span>🔊 เสียงอ่านเจ้าของภาษา: พร้อมแล้ว</span>
+                    </span>
 
-              <span
-                className={`inline-flex items-center gap-1 px-2.5 sm:px-3.5 py-1 sm:py-1.5 rounded-xl border ${
-                  sttSupported
-                    ? 'bg-sky-50 text-sky-800 border-sky-300'
-                    : 'bg-amber-50 text-amber-800 border-amber-300'
-                }`}
-              >
-                <Mic className="w-3.5 h-3.5 text-sky-600 shrink-0" />
-                <span>🎤 ไมค์ฝึกพูดกับ AI: พร้อมฟังคนเก่ง</span>
-              </span>
-            </div>
-          </section>
+                    <span
+                      className={`inline-flex items-center gap-1 px-2.5 py-1 rounded-xl border ${
+                        sttSupported
+                          ? 'bg-sky-50 text-sky-800 border-sky-300'
+                          : 'bg-amber-50 text-amber-800 border-amber-300'
+                      }`}
+                    >
+                      <Mic className="w-3.5 h-3.5 text-sky-600 shrink-0" />
+                      <span>🎤 ไมค์ฝึกพูดกับ AI: พร้อมฟังคนเก่ง</span>
+                    </span>
+                  </div>
+                </>
+              )}
+            </section>
+          ) : (
+            // ==================== OTHER TABS (Flashcards, Quiz, Stats): Sleek Compact Mini-Header ====================
+            <section className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 px-3.5 py-2 sm:px-4 sm:py-2.5 rounded-2xl bg-white/90 backdrop-blur-xs border-2 border-amber-200 shadow-2xs">
+              <div className="flex items-center gap-2.5">
+                <span className="text-xl sm:text-2xl">
+                  {activeTab === 'flashcards' ? '🗂️' : activeTab === 'quiz' ? '🎯' : '🏆'}
+                </span>
+                <div>
+                  <h2 className="text-xs sm:text-sm font-black text-slate-900 flex items-center gap-1.5">
+                    <span>
+                      {activeTab === 'flashcards'
+                        ? `คลังการ์ดคำศัพท์สำหรับเด็ก (${cards.length} คำ)`
+                        : activeTab === 'quiz'
+                        ? 'เกมทายคำศัพท์แสนสนุก'
+                        : 'ถ้วยรางวัลและความสำเร็จของคนเก่ง'}
+                    </span>
+                    <span className="text-[10px] px-2 py-0.5 rounded-full bg-amber-100 text-amber-800 font-bold border border-amber-200">
+                      5-6 ขวบ
+                    </span>
+                  </h2>
+                  <p className="text-[11px] text-slate-500 font-medium">
+                    {activeTab === 'flashcards'
+                      ? 'แตะที่การ์ดเพื่อพลิกดูความหมาย หรือกดไอคอนไมค์เพื่อฝึกออกเสียงกับ AI'
+                      : activeTab === 'quiz'
+                      ? 'ฟังเสียงคำศัพท์และเลือกความหมายที่ถูกต้องเพื่อสะสมคะแนน'
+                      : `สะสมดาวได้แล้ว ${totalStars}/15 ดวง และการ์ดที่ออกเสียงถูกต้อง ${spokenCardIds.size} คำ`}
+                  </p>
+                </div>
+              </div>
+
+              {/* Compact Quick Status */}
+              <div className="flex items-center gap-2 text-[10px] sm:text-[11px] font-bold text-slate-600 shrink-0 self-end sm:self-center">
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-emerald-50 text-emerald-800 border border-emerald-300">
+                  <Volume2 className="w-3.5 h-3.5 text-emerald-600" />
+                  <span>TTS พร้อม</span>
+                </span>
+                <span className="inline-flex items-center gap-1 px-2.5 py-1 rounded-xl bg-sky-50 text-sky-800 border border-sky-300">
+                  <Mic className="w-3.5 h-3.5 text-sky-600" />
+                  <span>STT พร้อม</span>
+                </span>
+              </div>
+            </section>
+          )
         )}
 
         {/* ==================== VIEW 1: STAGE MAP (โหมด 5 ด่านผจญภัย 3 ดาว) ==================== */}

@@ -3,147 +3,221 @@ import { Flashcard, DifficultyLevel } from '@/types/flashcard';
 
 export const runtime = 'nodejs';
 
-// Pre-curated high quality fallback dictionary for popular topics
+// Child-friendly fallback vocabulary for 5-6 year olds (Preschool / Kindergarten)
 const TOPIC_PRESETS: Record<string, Partial<Flashcard>[]> = {
-  interview: [
+  animals: [
     {
-      word: 'Initiative',
-      phonetic: '/ɪˈnɪʃ.ə.t̬ɪv/',
+      word: 'Cat',
+      phonetic: '/kæt/',
       partOfSpeech: 'noun',
-      thaiMeaning: 'ความคิดริเริ่ม, ความกระตือรือร้นในการลงมือทำก่อนผู้อื่น',
-      englishMeaning: 'The power or opportunity to act or take charge before others do.',
-      exampleSentence: 'She showed great initiative by proposing a streamlined workflow.',
-      exampleTranslation: 'เธอแสดงความคิดริเริ่มที่ยอดเยี่ยมโดยการเสนอกระบวนการทำงานที่กระชับขึ้น',
+      thaiMeaning: 'แมวเหมียว',
+      englishMeaning: 'A cute furry pet that says "Meow meow!" 🐱',
+      exampleSentence: 'The cute cat says meow meow.',
+      exampleTranslation: 'แมวน้อยน่ารักร้องเหมียวๆ',
     },
     {
-      word: 'Adaptability',
-      phonetic: '/əˌdæp.təˈbɪl.ə.t̬i/',
+      word: 'Dog',
+      phonetic: '/dɔːɡ/',
       partOfSpeech: 'noun',
-      thaiMeaning: 'ความสามารถในการปรับตัวให้เข้ากับสถานการณ์ใหม่ๆ',
-      englishMeaning: 'The quality of being able to adjust to new conditions.',
-      exampleSentence: 'Adaptability is one of the most valued traits in fast-growing startups.',
-      exampleTranslation: 'ความสามารถในการปรับตัวเป็นหนึ่งในคุณสมบัติที่มีค่าที่สุดในสตาร์ทอัพที่เติบโตเร็ว',
+      thaiMeaning: 'สุนัข, น้องหมา',
+      englishMeaning: 'A happy pet that barks "Woof woof!" 🐶',
+      exampleSentence: 'The friendly dog barks woof woof.',
+      exampleTranslation: 'น้องหมาใจดีเห่าโฮ่งๆ วิ่งเล่นไปมา',
     },
     {
-      word: 'Accomplishment',
-      phonetic: '/əˈkɑːm.plɪʃ.mənt/',
+      word: 'Bird',
+      phonetic: '/bɝːd/',
       partOfSpeech: 'noun',
-      thaiMeaning: 'ความสำเร็จ, ผลงานที่บรรลุตามเป้าหมาย',
-      englishMeaning: 'Something that has been achieved successfully.',
-      exampleSentence: 'Please highlight your greatest professional accomplishment.',
-      exampleTranslation: 'โปรดไฮไลต์ผลงานความสำเร็จทางอาชีพที่โดดเด่นที่สุดของคุณ',
+      thaiMeaning: 'นกน้อย',
+      englishMeaning: 'A little animal that flies in the blue sky 🐦',
+      exampleSentence: 'The little bird sings in the green tree.',
+      exampleTranslation: 'นกน้อยร้องเพลงเพราะๆ อยู่บนต้นไม้',
     },
     {
-      word: 'Collaboration',
-      phonetic: '/kəˌlæb.əˈreɪ.ʃən/',
+      word: 'Fish',
+      phonetic: '/fɪʃ/',
       partOfSpeech: 'noun',
-      thaiMeaning: 'การทำงานร่วมกัน, ความร่วมมือของทีม',
-      englishMeaning: 'The action of working with someone to produce or create something.',
-      exampleSentence: 'Effective cross-functional collaboration helped deliver the project early.',
-      exampleTranslation: 'การทำงานร่วมกันข้ามสายงานอย่างมีประสิทธิภาพช่วยให้ส่งมอบโปรเจกต์ได้ก่อนกำหนด',
+      thaiMeaning: 'ปลา',
+      englishMeaning: 'A swimming friend that glides in clear water 🐟',
+      exampleSentence: 'The little fish swims fast in the water.',
+      exampleTranslation: 'ปลาน้อยว่ายน้ำเร็วและร่าเริง',
     },
     {
-      word: 'Resilience',
-      phonetic: '/rɪˈzɪl.jəns/',
+      word: 'Lion',
+      phonetic: '/ˈlaɪ.ən/',
       partOfSpeech: 'noun',
-      thaiMeaning: 'ความสามารถในการฟื้นตัวจากอุปสรรค, ความทรหดอดทน',
-      englishMeaning: 'The capacity to recover quickly from difficulties; toughness.',
-      exampleSentence: 'Her resilience during the company restructuring was admirable.',
-      exampleTranslation: 'ความทรหดของเธอในช่วงการปรับโครงสร้างบริษัทเป็นที่น่าชื่นชมอย่างยิ่ง',
-    },
-  ],
-  coffee: [
-    {
-      word: 'Aroma',
-      phonetic: '/əˈroʊ.mə/',
-      partOfSpeech: 'noun',
-      thaiMeaning: 'กลิ่นหอมกรุ่น (โดยเฉพาะกาแฟหรืออาหาร)',
-      englishMeaning: 'A distinctive, typically pleasant smell.',
-      exampleSentence: 'The rich aroma of freshly roasted coffee beans filled the room.',
-      exampleTranslation: 'กลิ่นหอมกรุ่นของเมล็ดกาแฟคั่วบดสดใหม่ลอยฟุ้งไปทั่วห้อง',
+      thaiMeaning: 'สิงโตเจ้าป่า',
+      englishMeaning: 'A brave big cat that roars "Roar!" 🦁',
+      exampleSentence: 'The brave lion roars loudly in the forest.',
+      exampleTranslation: 'สิงโตผู้กล้าหาญคำรามเสียงดังก้องป่า',
     },
     {
-      word: 'Acidity',
-      phonetic: '/əˈsɪd.ə.t̬i/',
+      word: 'Duck',
+      phonetic: '/dʌk/',
       partOfSpeech: 'noun',
-      thaiMeaning: 'รสเปรี้ยวสดชื่นตามธรรมชาติของผลไม้ในกาแฟ',
-      englishMeaning: 'The pleasant sharpness or crispness characteristic of certain coffees.',
-      exampleSentence: 'This Ethiopian single-origin coffee has vibrant citrus acidity.',
-      exampleTranslation: 'กาแฟเอธิโอเปียสายพันธุ์เดี่ยวนี้มีรสเปรี้ยวสดชื่นแบบผลไม้ตระกูลส้ม',
-    },
-    {
-      word: 'Extraction',
-      phonetic: '/ɪkˈstræk.ʃən/',
-      partOfSpeech: 'noun',
-      thaiMeaning: 'การสกัดรสชาติและสารอาหารออกจากผงกาแฟ',
-      englishMeaning: 'The process of dissolving coffee flavors from grounds into water.',
-      exampleSentence: 'Over-extraction results in an unpleasant bitter taste.',
-      exampleTranslation: 'การสกัดกาแฟนานเกินไปส่งผลให้เกิดรสขมที่ไม่พึงประสงค์',
-    },
-    {
-      word: 'Artisan',
-      phonetic: '/ˈɑːr.t̬ə.zən/',
-      partOfSpeech: 'adjective / noun',
-      thaiMeaning: 'งานฝีมือประณีต, ช่างฝีมือผู้เชี่ยวชาญ',
-      englishMeaning: 'Made in a traditional or non-mechanized way with high quality craft.',
-      exampleSentence: 'The local cafe serves artisan pastries baked fresh every morning.',
-      exampleTranslation: 'คาเฟ่ท้องถิ่นเสิร์ฟขนมอบสไตล์ช่างฝีมือที่อบสดใหม่ทุกเช้า',
-    },
-    {
-      word: 'Aftertaste',
-      phonetic: '/ˈæf.tɚ.teɪst/',
-      partOfSpeech: 'noun',
-      thaiMeaning: 'รสสัมผัสที่หลงเหลืออยู่ในลำคอหลังจากกลืนแล้ว',
-      englishMeaning: 'A taste remaining in the mouth after eating or drinking something.',
-      exampleSentence: 'The espresso finishes with a smooth caramel aftertaste.',
-      exampleTranslation: 'เอสเปรสโซ่ทิ้งรสสัมผัสหวานนุ่มละมุนของคาราเมลไว้ในลำคอ',
+      thaiMeaning: 'เป็ดก้าบก้าบ',
+      englishMeaning: 'A cute bird that swims and says "Quack quack!" 🦆',
+      exampleSentence: 'The yellow duck swims across the pond.',
+      exampleTranslation: 'เป็ดสีเหลืองว่ายน้ำข้ามสระอย่างสบายใจ',
     },
   ],
-  tech: [
+  school: [
     {
-      word: 'Microservices',
-      phonetic: '/ˌmaɪ.kroʊˈsɝː.vɪs.ɪz/',
+      word: 'Book',
+      phonetic: '/bʊk/',
       partOfSpeech: 'noun',
-      thaiMeaning: 'สถาปัตยกรรมบริการย่อยแบบกระจายศูนย์',
-      englishMeaning: 'An architectural approach where an app is composed of small independent services.',
-      exampleSentence: 'Migrating to microservices allowed each team to deploy independently.',
-      exampleTranslation: 'การย้ายไปใช้สถาปัตยกรรมบริการย่อยช่วยให้แต่ละทีมสามารถปรับใช้ระบบแยกกันได้อย่างอิสระ',
+      thaiMeaning: 'หนังสือ',
+      englishMeaning: 'Pages full of pictures and fun stories 📖',
+      exampleSentence: 'I open my fun picture book to read.',
+      exampleTranslation: 'หนูเปิดหนังสือนิทานภาพแสนสนุกเพื่ออ่าน',
     },
     {
-      word: 'Concurrency',
-      phonetic: '/kənˈkɝː.ən.si/',
+      word: 'Pen',
+      phonetic: '/pen/',
       partOfSpeech: 'noun',
-      thaiMeaning: 'การทำงานพร้อมกันหลายภารกิจในระบบคอมพิวเตอร์',
-      englishMeaning: 'The ability of different parts of a program to be executed out-of-order or concurrently.',
-      exampleSentence: 'Go language handles concurrency efficiently using goroutines.',
-      exampleTranslation: 'ภาษา Go จัดการงานที่ทำพร้อมกันได้อย่างมีประสิทธิภาพด้วย goroutines',
+      thaiMeaning: 'ปากกา',
+      englishMeaning: 'A tool used to draw with bright ink 🖊️',
+      exampleSentence: 'I draw a pretty star with my blue pen.',
+      exampleTranslation: 'หนูวาดรูปดาวแสนสวยด้วยปากกาสีฟ้า',
     },
     {
-      word: 'Latency',
-      phonetic: '/ˈleɪ.tən.si/',
+      word: 'Bag',
+      phonetic: '/bæɡ/',
       partOfSpeech: 'noun',
-      thaiMeaning: 'ความหน่วงเวลาในการส่งผ่านข้อมูลของระบบ',
-      englishMeaning: 'The delay before a transfer of data begins following an instruction.',
-      exampleSentence: 'Edge servers drastically reduce network latency for international users.',
-      exampleTranslation: 'เซิร์ฟเวอร์แบบ Edge ช่วยลดความหน่วงเครือข่ายสำหรับผู้ใช้ทั่วโลกได้อย่างมาก',
+      thaiMeaning: 'กระเป๋า',
+      englishMeaning: 'A bag to carry books and pencils to school 🎒',
+      exampleSentence: 'My colorful school bag is ready.',
+      exampleTranslation: 'กระเป๋านักเรียนสีสดใสของหนูพร้อมแล้ว',
     },
     {
-      word: 'Authentication',
-      phonetic: '/ɔːˌθen.təˈkeɪ.ʃən/',
+      word: 'Pencil',
+      phonetic: '/ˈpen.səl/',
       partOfSpeech: 'noun',
-      thaiMeaning: 'การยืนยันตัวตน, การตรวจสอบความถูกต้องของผู้ใช้งาน',
-      englishMeaning: 'The process of verifying that someone or something is who they claim to be.',
-      exampleSentence: 'Two-factor authentication adds an extra layer of account protection.',
-      exampleTranslation: 'การยืนยันตัวตนแบบสองขั้นตอนช่วยเพิ่มระดับความปลอดภัยของบัญชี',
+      thaiMeaning: 'ดินสอ',
+      englishMeaning: 'A pencil used for writing and drawing cute shapes ✏️',
+      exampleSentence: 'I write my name with a sharp pencil.',
+      exampleTranslation: 'หนูเขียนชื่อของหนูด้วยดินสอแท่งโปรด',
     },
     {
-      word: 'Polymorphism',
-      phonetic: '/ˌpɑː.liˈmɔːr.fɪ.zəm/',
+      word: 'Chair',
+      phonetic: '/tʃer/',
       partOfSpeech: 'noun',
-      thaiMeaning: 'ความหลากหลายรูป, ความสามารถของอ็อบเจกต์ในการตอบสนองตามประเภท',
-      englishMeaning: 'The ability of a message or data to be processed in more than one form.',
-      exampleSentence: 'Polymorphism is a fundamental pillar of object-oriented programming.',
-      exampleTranslation: 'ความหลากหลายรูปเป็นเสาหลักพื้นฐานของการเขียนโปรแกรมเชิงวัตถุ',
+      thaiMeaning: 'เก้าอี้',
+      englishMeaning: 'A comfy seat to sit down and learn happily 🪑',
+      exampleSentence: 'I sit nicely on the wooden chair.',
+      exampleTranslation: 'หนูนั่งเรียบร้อยบนเก้าอี้ไม้',
+    },
+    {
+      word: 'Desk',
+      phonetic: '/desk/',
+      partOfSpeech: 'noun',
+      thaiMeaning: 'โต๊ะเรียน',
+      englishMeaning: 'A table where we put our books and color pictures 🪑',
+      exampleSentence: 'My picture books are on the desk.',
+      exampleTranslation: 'หนังสือนิทานของหนูวางอยู่บนโต๊ะเรียน',
+    },
+  ],
+  fruits_colors: [
+    {
+      word: 'Apple',
+      phonetic: '/ˈæp.əl/',
+      partOfSpeech: 'noun',
+      thaiMeaning: 'แอปเปิล',
+      englishMeaning: 'A sweet, crunchy red fruit that is yummy 🍎',
+      exampleSentence: 'I eat a sweet red apple every day.',
+      exampleTranslation: 'หนูกินแอปเปิลสีแดงแสนอร่อยทุกวัน',
+    },
+    {
+      word: 'Banana',
+      phonetic: '/bəˈnæn.ə/',
+      partOfSpeech: 'noun',
+      thaiMeaning: 'กล้วย',
+      englishMeaning: 'A sweet yellow fruit that friendly monkeys love 🍌',
+      exampleSentence: 'Monkeys love sweet yellow bananas.',
+      exampleTranslation: 'พวกเจ้าลิงชอบกินกล้วยสีเหลืองแสนหวาน',
+    },
+    {
+      word: 'Red',
+      phonetic: '/red/',
+      partOfSpeech: 'adjective',
+      thaiMeaning: 'สีแดง',
+      englishMeaning: 'The bright warm color of juicy apples 🔴',
+      exampleSentence: 'The shiny ripe apple is bright red.',
+      exampleTranslation: 'ผลแอปเปิลสุกมีสีแดงสดใสน่ากิน',
+    },
+    {
+      word: 'Blue',
+      phonetic: '/bluː/',
+      partOfSpeech: 'adjective',
+      thaiMeaning: 'สีฟ้า, สีน้ำเงิน',
+      englishMeaning: 'The pretty cool color of the sky and ocean 🔵',
+      exampleSentence: 'The wide morning sky is clear blue.',
+      exampleTranslation: 'ท้องฟ้ากว้างใหญ่ยามเช้าเป็นสีฟ้าสดใส',
+    },
+    {
+      word: 'Yellow',
+      phonetic: '/ˈjel.oʊ/',
+      partOfSpeech: 'adjective',
+      thaiMeaning: 'สีเหลือง',
+      englishMeaning: 'The warm shining color of the bright sun 🟡',
+      exampleSentence: 'The warm sunshine is bright yellow.',
+      exampleTranslation: 'แสงแดดอันอบอุ่นส่องแสงสีเหลืองนวล',
+    },
+    {
+      word: 'Orange',
+      phonetic: '/ˈɔːr.ɪndʒ/',
+      partOfSpeech: 'noun',
+      thaiMeaning: 'ส้ม',
+      englishMeaning: 'A round, sweet and juicy fruit packed with vitamins 🍊',
+      exampleSentence: 'Sweet orange juice is fresh and tasty.',
+      exampleTranslation: 'น้ำส้มแสนหวานอร่อยสดชื่นชื่นใจ',
+    },
+  ],
+  nature: [
+    {
+      word: 'Sun',
+      phonetic: '/sʌn/',
+      partOfSpeech: 'noun',
+      thaiMeaning: 'พระอาทิตย์',
+      englishMeaning: 'The big warm star that brings light to our day ☀️',
+      exampleSentence: 'The morning sun brings warm light.',
+      exampleTranslation: 'พระอาทิตย์ยามเช้าส่องแสงอบอุ่นทั่วฟ้า',
+    },
+    {
+      word: 'Star',
+      phonetic: '/stɑːr/',
+      partOfSpeech: 'noun',
+      thaiMeaning: 'ดวงดาว',
+      englishMeaning: 'A bright little light twinkling high in the night sky ⭐',
+      exampleSentence: 'Look at the twinkling star in the dark sky.',
+      exampleTranslation: 'มองดูดวงดาวกะพริบระยิบระยับบนฟ้าสิ',
+    },
+    {
+      word: 'Moon',
+      phonetic: '/muːn/',
+      partOfSpeech: 'noun',
+      thaiMeaning: 'พระจันทร์',
+      englishMeaning: 'The glowing moon that smiles down at night 🌙',
+      exampleSentence: 'The round moon shines softly at night.',
+      exampleTranslation: 'พระจันทร์กลมโตส่องแสงนวลตาในยามค่ำคืน',
+    },
+    {
+      word: 'Tree',
+      phonetic: '/triː/',
+      partOfSpeech: 'noun',
+      thaiMeaning: 'ต้นไม้',
+      englishMeaning: 'A tall green plant with cool shade and green leaves 🌳',
+      exampleSentence: 'The tall green tree gives cool shade.',
+      exampleTranslation: 'ต้นไม้ต้นใหญ่ให้ร่มเงาที่เย็นสบาย',
+    },
+    {
+      word: 'Rain',
+      phonetic: '/reɪn/',
+      partOfSpeech: 'noun',
+      thaiMeaning: 'สายฝน, ฝนตก',
+      englishMeaning: 'Cool water drops falling gently from clouds 🌧️',
+      exampleSentence: 'Cool rain helps flowers and trees grow.',
+      exampleTranslation: 'สายฝนเย็นฉ่ำช่วยให้ดอกไม้และต้นไม้เติบโต',
     },
   ],
 };
@@ -151,24 +225,29 @@ const TOPIC_PRESETS: Record<string, Partial<Flashcard>[]> = {
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { topic = 'General English', difficulty = 'Intermediate', count = 5 } = body;
+    const { topic = 'Animals', difficulty = 'Beginner', count = 5 } = body;
 
     const apiKey = process.env.GEMINI_API_KEY;
 
-    // If Gemini API Key is configured, attempt real Gemini call
+    // If Gemini API Key is configured, attempt real Gemini call tailored for early-childhood
     if (apiKey) {
       try {
-        const prompt = `You are an expert English linguist and vocabulary coach.
-Generate exactly ${count} educational English vocabulary flashcards for the topic: "${topic}" with difficulty level: "${difficulty}".
+        const prompt = `You are a warm, friendly early-childhood English teacher.
+Generate exactly ${count} educational English vocabulary flashcards for preschool/kindergarten children (aged 5-6) for the topic: "${topic}".
+CRITICAL RULES FOR 5-6 YEAR OLDS:
+1. Words MUST be very simple, basic, 1-2 syllables suitable for young children aged 5-6 (e.g. Cat, Dog, Bird, Fish, Lion, Duck, Book, Pen, Bag, Pencil, Chair, Apple, Banana, Red, Blue, Yellow, Sun, Star, Milk, etc.).
+2. NEVER use complex, adult, abstract, or exam-level vocabulary (e.g. "Initiative", "Accomplishment", "Adaptability", "Collaboration", "Microservices").
+3. Thai meaning must be short, sweet, and easy for 5-6 year olds to understand.
+4. Example sentence must be short, positive, and easy to pronounce for a child.
 Output MUST be a strictly valid JSON array of objects with these exact keys:
 [
   {
-    "word": "string (English word)",
-    "phonetic": "string (IPA phonetic, e.g. /ˈæl.ɡə.rɪ.ðəm/)",
-    "partOfSpeech": "noun | verb | adjective | adverb",
-    "thaiMeaning": "string (Clear Thai definition)",
-    "englishMeaning": "string (Clear English definition)",
-    "exampleSentence": "string (Realistic natural English example sentence)",
+    "word": "string (Simple 1-2 syllable English word)",
+    "phonetic": "string (IPA phonetic, e.g. /kæt/)",
+    "partOfSpeech": "noun | verb | adjective",
+    "thaiMeaning": "string (Clear friendly Thai definition)",
+    "englishMeaning": "string (Child-friendly definition with cute emoji)",
+    "exampleSentence": "string (Short simple English sentence)",
     "exampleTranslation": "string (Thai translation of example sentence)"
   }
 ]
@@ -204,7 +283,7 @@ Do not wrap in markdown tags like \`\`\`json. Output raw JSON only.`;
               exampleSentence: item.exampleSentence,
               exampleTranslation: item.exampleTranslation,
               category: topic.length > 20 ? topic.substring(0, 20) : topic,
-              difficulty: difficulty as DifficultyLevel,
+              difficulty: (difficulty as DifficultyLevel) || 'Beginner',
               tags: ['ai-generated', topic.toLowerCase()],
             }));
 
@@ -216,44 +295,58 @@ Do not wrap in markdown tags like \`\`\`json. Output raw JSON only.`;
           }
         }
       } catch (geminiError) {
-        console.warn('Gemini API call failed, falling back to smart generator:', geminiError);
+        console.warn('Gemini API call failed, falling back to smart child preset generator:', geminiError);
       }
     }
 
-    // Smart Fallback Generator (Instant & reliable even without API key)
+    // Smart Fallback Generator (Preschool 5-6 year old friendly)
     const lowerTopic = topic.toLowerCase();
-    let templateSet = TOPIC_PRESETS.interview;
+    let templateSet = TOPIC_PRESETS.animals;
 
-    if (lowerTopic.includes('coffee') || lowerTopic.includes('cafe') || lowerTopic.includes('food')) {
-      templateSet = TOPIC_PRESETS.coffee;
-    } else if (
-      lowerTopic.includes('tech') ||
-      lowerTopic.includes('code') ||
-      lowerTopic.includes('cloud') ||
-      lowerTopic.includes('cyber') ||
-      lowerTopic.includes('software')
+    if (
+      lowerTopic.includes('school') ||
+      lowerTopic.includes('โรงเรียน') ||
+      lowerTopic.includes('ของใช้') ||
+      lowerTopic.includes('object') ||
+      lowerTopic.includes('stationery')
     ) {
-      templateSet = TOPIC_PRESETS.tech;
+      templateSet = TOPIC_PRESETS.school;
+    } else if (
+      lowerTopic.includes('fruit') ||
+      lowerTopic.includes('color') ||
+      lowerTopic.includes('food') ||
+      lowerTopic.includes('สี') ||
+      lowerTopic.includes('ผลไม้') ||
+      lowerTopic.includes('อาหาร')
+    ) {
+      templateSet = TOPIC_PRESETS.fruits_colors;
+    } else if (
+      lowerTopic.includes('nature') ||
+      lowerTopic.includes('ธรรมชาติ') ||
+      lowerTopic.includes('sky') ||
+      lowerTopic.includes('weather')
+    ) {
+      templateSet = TOPIC_PRESETS.nature;
     }
 
     // Generate tailored flashcards
     const generatedCards: Flashcard[] = templateSet.slice(0, count).map((item, idx) => ({
       id: `gen-${Date.now()}-${idx}`,
-      word: item.word || `Concept ${idx + 1}`,
-      phonetic: item.phonetic || '/kənˈsept/',
+      word: item.word || `Word ${idx + 1}`,
+      phonetic: item.phonetic || '/wɝːd/',
       partOfSpeech: item.partOfSpeech || 'noun',
       thaiMeaning: item.thaiMeaning || 'ความหมายคำศัพท์',
-      englishMeaning: item.englishMeaning || 'A relevant concept in this domain.',
-      exampleSentence: item.exampleSentence || 'This term is widely used in modern context.',
-      exampleTranslation: item.exampleTranslation || 'คำนี้ถูกใช้อย่างแพร่หลายในบริบทปัจจุบัน',
+      englishMeaning: item.englishMeaning || 'A cute simple word for children.',
+      exampleSentence: item.exampleSentence || 'This is a fun word to learn.',
+      exampleTranslation: item.exampleTranslation || 'นี่คือคำศัพท์แสนสนุกที่น่าเรียนรู้',
       category: topic.length > 20 ? topic.substring(0, 20) : topic,
-      difficulty: difficulty as DifficultyLevel,
+      difficulty: (difficulty as DifficultyLevel) || 'Beginner',
       tags: ['ai-generated', topic.toLowerCase()],
     }));
 
     return NextResponse.json({
       success: true,
-      source: 'smart-template-engine',
+      source: 'smart-child-template-engine',
       topic,
       cards: generatedCards,
     });
