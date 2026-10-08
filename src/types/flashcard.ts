@@ -4,6 +4,7 @@ export interface Flashcard {
   id: string;
   word: string;
   phonetic: string;
+  thaiReading?: string; // Thai phonetic reading e.g. "แคท", "ด็อก", "แอป-เปิ้ล"
   partOfSpeech: string;
   thaiMeaning: string;
   englishMeaning: string;

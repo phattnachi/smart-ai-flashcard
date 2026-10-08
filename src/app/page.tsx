@@ -29,12 +29,12 @@ import {
   CheckCircle2,
 } from 'lucide-react';
 
-const STORAGE_KEY_CARDS = 'smart_ai_cards_kids_v3';
-const STORAGE_KEY_MASTERED = 'smart_ai_mastered_kids_v3';
-const STORAGE_KEY_STAGES = 'smart_ai_stage_progress_kids_v3';
-const STORAGE_KEY_SPOKEN = 'smart_ai_spoken_correct_v3';
-const STORAGE_KEY_THRESHOLD = 'smart_ai_pronunciation_threshold_v3';
-const STORAGE_KEY_HINTS = 'smart_ai_show_hints_v3';
+const STORAGE_KEY_CARDS = 'smart_ai_cards_kids_v4';
+const STORAGE_KEY_MASTERED = 'smart_ai_mastered_kids_v4';
+const STORAGE_KEY_STAGES = 'smart_ai_stage_progress_kids_v4';
+const STORAGE_KEY_SPOKEN = 'smart_ai_spoken_correct_v4';
+const STORAGE_KEY_THRESHOLD = 'smart_ai_pronunciation_threshold_v4';
+const STORAGE_KEY_HINTS = 'smart_ai_show_hints_v4';
 
 // Normalizes stage progression ensuring Stage N requires at least 2 stars in Stage N-1 to unlock
 const normalizeStageProgress = (prog: Record<number, StageProgress>): Record<number, StageProgress> => {
@@ -123,10 +123,10 @@ export default function HomePage() {
         const savedCards = localStorage.getItem(STORAGE_KEY_CARDS);
         if (savedCards) {
           const parsed = JSON.parse(savedCards);
-          const hasOldAdultWords = Array.isArray(parsed) && parsed.some(
-            (c: Flashcard) => ['Initiative', 'Airport', 'Station', 'Passport', 'Excuse me'].includes(c.word)
+          const hasOutdatedCards = Array.isArray(parsed) && parsed.some(
+            (c: Flashcard) => !c.thaiReading || c.phonetic?.startsWith('/') || ['Initiative', 'Airport', 'Station', 'Passport', 'Excuse me'].includes(c.word)
           );
-          if (Array.isArray(parsed) && parsed.length > 0 && !hasOldAdultWords) {
+          if (Array.isArray(parsed) && parsed.length > 0 && !hasOutdatedCards) {
             setCards(parsed);
           } else {
             setCards(INITIAL_FLASHCARDS);

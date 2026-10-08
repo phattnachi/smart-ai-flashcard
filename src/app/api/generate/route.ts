@@ -3,12 +3,13 @@ import { Flashcard, DifficultyLevel } from '@/types/flashcard';
 
 export const runtime = 'nodejs';
 
-// Child-friendly fallback vocabulary for 5-6 year olds (Preschool / Kindergarten)
+// Child-friendly fallback vocabulary for 5-6 year olds (Preschool / Kindergarten) with Thai phonetic reading
 const TOPIC_PRESETS: Record<string, Partial<Flashcard>[]> = {
   animals: [
     {
       word: 'Cat',
-      phonetic: '/kæt/',
+      phonetic: 'แคท',
+      thaiReading: 'แคท',
       partOfSpeech: 'noun',
       thaiMeaning: 'แมวเหมียว',
       englishMeaning: 'A cute furry pet that says "Meow meow!" 🐱',
@@ -17,7 +18,8 @@ const TOPIC_PRESETS: Record<string, Partial<Flashcard>[]> = {
     },
     {
       word: 'Dog',
-      phonetic: '/dɔːɡ/',
+      phonetic: 'ด็อก',
+      thaiReading: 'ด็อก',
       partOfSpeech: 'noun',
       thaiMeaning: 'สุนัข, น้องหมา',
       englishMeaning: 'A happy pet that barks "Woof woof!" 🐶',
@@ -26,7 +28,8 @@ const TOPIC_PRESETS: Record<string, Partial<Flashcard>[]> = {
     },
     {
       word: 'Bird',
-      phonetic: '/bɝːd/',
+      phonetic: 'เบิร์ด',
+      thaiReading: 'เบิร์ด',
       partOfSpeech: 'noun',
       thaiMeaning: 'นกน้อย',
       englishMeaning: 'A little animal that flies in the blue sky 🐦',
@@ -35,7 +38,8 @@ const TOPIC_PRESETS: Record<string, Partial<Flashcard>[]> = {
     },
     {
       word: 'Fish',
-      phonetic: '/fɪʃ/',
+      phonetic: 'ฟิช',
+      thaiReading: 'ฟิช',
       partOfSpeech: 'noun',
       thaiMeaning: 'ปลา',
       englishMeaning: 'A swimming friend that glides in clear water 🐟',
@@ -44,7 +48,8 @@ const TOPIC_PRESETS: Record<string, Partial<Flashcard>[]> = {
     },
     {
       word: 'Lion',
-      phonetic: '/ˈlaɪ.ən/',
+      phonetic: 'ไล-ออน',
+      thaiReading: 'ไล-ออน',
       partOfSpeech: 'noun',
       thaiMeaning: 'สิงโตเจ้าป่า',
       englishMeaning: 'A brave big cat that roars "Roar!" 🦁',
@@ -53,7 +58,8 @@ const TOPIC_PRESETS: Record<string, Partial<Flashcard>[]> = {
     },
     {
       word: 'Duck',
-      phonetic: '/dʌk/',
+      phonetic: 'ดั๊ก',
+      thaiReading: 'ดั๊ก',
       partOfSpeech: 'noun',
       thaiMeaning: 'เป็ดก้าบก้าบ',
       englishMeaning: 'A cute bird that swims and says "Quack quack!" 🦆',
@@ -64,7 +70,8 @@ const TOPIC_PRESETS: Record<string, Partial<Flashcard>[]> = {
   school: [
     {
       word: 'Book',
-      phonetic: '/bʊk/',
+      phonetic: 'บุ๊ค',
+      thaiReading: 'บุ๊ค',
       partOfSpeech: 'noun',
       thaiMeaning: 'หนังสือ',
       englishMeaning: 'Pages full of pictures and fun stories 📖',
@@ -73,7 +80,8 @@ const TOPIC_PRESETS: Record<string, Partial<Flashcard>[]> = {
     },
     {
       word: 'Pen',
-      phonetic: '/pen/',
+      phonetic: 'เพ็น',
+      thaiReading: 'เพ็น',
       partOfSpeech: 'noun',
       thaiMeaning: 'ปากกา',
       englishMeaning: 'A tool used to draw with bright ink 🖊️',
@@ -82,7 +90,8 @@ const TOPIC_PRESETS: Record<string, Partial<Flashcard>[]> = {
     },
     {
       word: 'Bag',
-      phonetic: '/bæɡ/',
+      phonetic: 'แบ็ก',
+      thaiReading: 'แบ็ก',
       partOfSpeech: 'noun',
       thaiMeaning: 'กระเป๋า',
       englishMeaning: 'A bag to carry books and pencils to school 🎒',
@@ -91,7 +100,8 @@ const TOPIC_PRESETS: Record<string, Partial<Flashcard>[]> = {
     },
     {
       word: 'Pencil',
-      phonetic: '/ˈpen.səl/',
+      phonetic: 'เพ็น-เซิล',
+      thaiReading: 'เพ็น-เซิล',
       partOfSpeech: 'noun',
       thaiMeaning: 'ดินสอ',
       englishMeaning: 'A pencil used for writing and drawing cute shapes ✏️',
@@ -100,7 +110,8 @@ const TOPIC_PRESETS: Record<string, Partial<Flashcard>[]> = {
     },
     {
       word: 'Chair',
-      phonetic: '/tʃer/',
+      phonetic: 'แชร์',
+      thaiReading: 'แชร์',
       partOfSpeech: 'noun',
       thaiMeaning: 'เก้าอี้',
       englishMeaning: 'A comfy seat to sit down and learn happily 🪑',
@@ -109,7 +120,8 @@ const TOPIC_PRESETS: Record<string, Partial<Flashcard>[]> = {
     },
     {
       word: 'Desk',
-      phonetic: '/desk/',
+      phonetic: 'เดสก์',
+      thaiReading: 'เดสก์',
       partOfSpeech: 'noun',
       thaiMeaning: 'โต๊ะเรียน',
       englishMeaning: 'A table where we put our books and color pictures 🪑',
@@ -120,7 +132,8 @@ const TOPIC_PRESETS: Record<string, Partial<Flashcard>[]> = {
   fruits_colors: [
     {
       word: 'Apple',
-      phonetic: '/ˈæp.əl/',
+      phonetic: 'แอป-เปิ้ล',
+      thaiReading: 'แอป-เปิ้ล',
       partOfSpeech: 'noun',
       thaiMeaning: 'แอปเปิล',
       englishMeaning: 'A sweet, crunchy red fruit that is yummy 🍎',
@@ -129,7 +142,8 @@ const TOPIC_PRESETS: Record<string, Partial<Flashcard>[]> = {
     },
     {
       word: 'Banana',
-      phonetic: '/bəˈnæn.ə/',
+      phonetic: 'บา-นา-น่า',
+      thaiReading: 'บา-นา-น่า',
       partOfSpeech: 'noun',
       thaiMeaning: 'กล้วย',
       englishMeaning: 'A sweet yellow fruit that friendly monkeys love 🍌',
@@ -138,7 +152,8 @@ const TOPIC_PRESETS: Record<string, Partial<Flashcard>[]> = {
     },
     {
       word: 'Red',
-      phonetic: '/red/',
+      phonetic: 'เรด',
+      thaiReading: 'เรด',
       partOfSpeech: 'adjective',
       thaiMeaning: 'สีแดง',
       englishMeaning: 'The bright warm color of juicy apples 🔴',
@@ -147,7 +162,8 @@ const TOPIC_PRESETS: Record<string, Partial<Flashcard>[]> = {
     },
     {
       word: 'Blue',
-      phonetic: '/bluː/',
+      phonetic: 'บลู',
+      thaiReading: 'บลู',
       partOfSpeech: 'adjective',
       thaiMeaning: 'สีฟ้า, สีน้ำเงิน',
       englishMeaning: 'The pretty cool color of the sky and ocean 🔵',
@@ -156,7 +172,8 @@ const TOPIC_PRESETS: Record<string, Partial<Flashcard>[]> = {
     },
     {
       word: 'Yellow',
-      phonetic: '/ˈjel.oʊ/',
+      phonetic: 'เยล-โล่',
+      thaiReading: 'เยล-โล่',
       partOfSpeech: 'adjective',
       thaiMeaning: 'สีเหลือง',
       englishMeaning: 'The warm shining color of the bright sun 🟡',
@@ -165,7 +182,8 @@ const TOPIC_PRESETS: Record<string, Partial<Flashcard>[]> = {
     },
     {
       word: 'Orange',
-      phonetic: '/ˈɔːr.ɪndʒ/',
+      phonetic: 'ออ-เรนจ์',
+      thaiReading: 'ออ-เรนจ์',
       partOfSpeech: 'noun',
       thaiMeaning: 'ส้ม',
       englishMeaning: 'A round, sweet and juicy fruit packed with vitamins 🍊',
@@ -176,7 +194,8 @@ const TOPIC_PRESETS: Record<string, Partial<Flashcard>[]> = {
   nature: [
     {
       word: 'Sun',
-      phonetic: '/sʌn/',
+      phonetic: 'ซัน',
+      thaiReading: 'ซัน',
       partOfSpeech: 'noun',
       thaiMeaning: 'พระอาทิตย์',
       englishMeaning: 'The big warm star that brings light to our day ☀️',
@@ -185,7 +204,8 @@ const TOPIC_PRESETS: Record<string, Partial<Flashcard>[]> = {
     },
     {
       word: 'Star',
-      phonetic: '/stɑːr/',
+      phonetic: 'สตาร์',
+      thaiReading: 'สตาร์',
       partOfSpeech: 'noun',
       thaiMeaning: 'ดวงดาว',
       englishMeaning: 'A bright little light twinkling high in the night sky ⭐',
@@ -194,7 +214,8 @@ const TOPIC_PRESETS: Record<string, Partial<Flashcard>[]> = {
     },
     {
       word: 'Moon',
-      phonetic: '/muːn/',
+      phonetic: 'มูน',
+      thaiReading: 'มูน',
       partOfSpeech: 'noun',
       thaiMeaning: 'พระจันทร์',
       englishMeaning: 'The glowing moon that smiles down at night 🌙',
@@ -203,7 +224,8 @@ const TOPIC_PRESETS: Record<string, Partial<Flashcard>[]> = {
     },
     {
       word: 'Tree',
-      phonetic: '/triː/',
+      phonetic: 'ทรี',
+      thaiReading: 'ทรี',
       partOfSpeech: 'noun',
       thaiMeaning: 'ต้นไม้',
       englishMeaning: 'A tall green plant with cool shade and green leaves 🌳',
@@ -212,7 +234,8 @@ const TOPIC_PRESETS: Record<string, Partial<Flashcard>[]> = {
     },
     {
       word: 'Rain',
-      phonetic: '/reɪn/',
+      phonetic: 'เรน',
+      thaiReading: 'เรน',
       partOfSpeech: 'noun',
       thaiMeaning: 'สายฝน, ฝนตก',
       englishMeaning: 'Cool water drops falling gently from clouds 🌧️',
@@ -236,14 +259,16 @@ export async function POST(req: NextRequest) {
 Generate exactly ${count} educational English vocabulary flashcards for preschool/kindergarten children (aged 5-6) for the topic: "${topic}".
 CRITICAL RULES FOR 5-6 YEAR OLDS:
 1. Words MUST be very simple, basic, 1-2 syllables suitable for young children aged 5-6 (e.g. Cat, Dog, Bird, Fish, Lion, Duck, Book, Pen, Bag, Pencil, Chair, Apple, Banana, Red, Blue, Yellow, Sun, Star, Milk, etc.).
-2. NEVER use complex, adult, abstract, or exam-level vocabulary (e.g. "Initiative", "Accomplishment", "Adaptability", "Collaboration", "Microservices").
-3. Thai meaning must be short, sweet, and easy for 5-6 year olds to understand.
-4. Example sentence must be short, positive, and easy to pronounce for a child.
+2. NEVER use complex, adult, abstract, or exam-level vocabulary.
+3. Provide "thaiReading" which is the simple Thai phonetic reading that Thai children and parents can read immediately (e.g. "แคท", "ด็อก", "เบิร์ด", "แอป-เปิ้ล", "บุ๊ค").
+4. Thai meaning must be short, sweet, and easy for 5-6 year olds to understand.
+5. Example sentence must be short, positive, and easy to pronounce for a child.
 Output MUST be a strictly valid JSON array of objects with these exact keys:
 [
   {
     "word": "string (Simple 1-2 syllable English word)",
-    "phonetic": "string (IPA phonetic, e.g. /kæt/)",
+    "thaiReading": "string (Thai phonetic reading, e.g. แคท, ด็อก, แอป-เปิ้ล)",
+    "phonetic": "string (Thai phonetic reading, e.g. แคท, ด็อก, แอป-เปิ้ล)",
     "partOfSpeech": "noun | verb | adjective",
     "thaiMeaning": "string (Clear friendly Thai definition)",
     "englishMeaning": "string (Child-friendly definition with cute emoji)",
@@ -276,7 +301,8 @@ Do not wrap in markdown tags like \`\`\`json. Output raw JSON only.`;
             const formattedCards: Flashcard[] = parsed.map((item: any, i: number) => ({
               id: `ai-${Date.now()}-${i}`,
               word: item.word,
-              phonetic: item.phonetic || `/${item.word.toLowerCase()}/`,
+              phonetic: item.thaiReading || item.phonetic || item.word,
+              thaiReading: item.thaiReading || item.phonetic || item.word,
               partOfSpeech: item.partOfSpeech || 'noun',
               thaiMeaning: item.thaiMeaning,
               englishMeaning: item.englishMeaning,
@@ -333,7 +359,8 @@ Do not wrap in markdown tags like \`\`\`json. Output raw JSON only.`;
     const generatedCards: Flashcard[] = templateSet.slice(0, count).map((item, idx) => ({
       id: `gen-${Date.now()}-${idx}`,
       word: item.word || `Word ${idx + 1}`,
-      phonetic: item.phonetic || '/wɝːd/',
+      phonetic: item.thaiReading || item.phonetic || 'คำอ่าน',
+      thaiReading: item.thaiReading || item.phonetic || 'คำอ่าน',
       partOfSpeech: item.partOfSpeech || 'noun',
       thaiMeaning: item.thaiMeaning || 'ความหมายคำศัพท์',
       englishMeaning: item.englishMeaning || 'A cute simple word for children.',

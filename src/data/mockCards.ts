@@ -39,7 +39,8 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
   {
     id: 'anim-1',
     word: 'Cat',
-    phonetic: '/kæt/',
+    phonetic: 'แคท',
+    thaiReading: 'แคท',
     partOfSpeech: 'noun',
     thaiMeaning: 'แมวเหมียว',
     englishMeaning: 'A cute furry pet that says "Meow meow!" 🐱',
@@ -52,7 +53,8 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
   {
     id: 'anim-2',
     word: 'Dog',
-    phonetic: '/dɔːɡ/',
+    phonetic: 'ด็อก',
+    thaiReading: 'ด็อก',
     partOfSpeech: 'noun',
     thaiMeaning: 'สุนัข, น้องหมา',
     englishMeaning: 'A happy pet that wags its tail and barks "Woof woof!" 🐶',
@@ -65,7 +67,8 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
   {
     id: 'anim-3',
     word: 'Bird',
-    phonetic: '/bɝːd/',
+    phonetic: 'เบิร์ด',
+    thaiReading: 'เบิร์ด',
     partOfSpeech: 'noun',
     thaiMeaning: 'นกน้อย',
     englishMeaning: 'A little feathered animal that flies in the blue sky 🐦',
@@ -78,7 +81,8 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
   {
     id: 'anim-4',
     word: 'Fish',
-    phonetic: '/fɪʃ/',
+    phonetic: 'ฟิช',
+    thaiReading: 'ฟิช',
     partOfSpeech: 'noun',
     thaiMeaning: 'ปลา',
     englishMeaning: 'A swimming friend that glides happily in clear water 🐟',
@@ -91,7 +95,8 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
   {
     id: 'anim-5',
     word: 'Lion',
-    phonetic: '/ˈlaɪ.ən/',
+    phonetic: 'ไล-ออน',
+    thaiReading: 'ไล-ออน',
     partOfSpeech: 'noun',
     thaiMeaning: 'สิงโตเจ้าป่า',
     englishMeaning: 'A brave big cat with a golden mane that roars "Roar!" 🦁',
@@ -104,7 +109,8 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
   {
     id: 'anim-6',
     word: 'Duck',
-    phonetic: '/dʌk/',
+    phonetic: 'ดั๊ก',
+    thaiReading: 'ดั๊ก',
     partOfSpeech: 'noun',
     thaiMeaning: 'เป็ดก้าบก้าบ',
     englishMeaning: 'A cute bird that swims and says "Quack quack!" 🦆',
@@ -119,7 +125,8 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
   {
     id: 'obj-1',
     word: 'Book',
-    phonetic: '/bʊk/',
+    phonetic: 'บุ๊ค',
+    thaiReading: 'บุ๊ค',
     partOfSpeech: 'noun',
     thaiMeaning: 'หนังสือ',
     englishMeaning: 'Pages full of colorful pictures and fun stories 📖',
@@ -132,7 +139,8 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
   {
     id: 'obj-2',
     word: 'Pen',
-    phonetic: '/pen/',
+    phonetic: 'เพ็น',
+    thaiReading: 'เพ็น',
     partOfSpeech: 'noun',
     thaiMeaning: 'ปากกา',
     englishMeaning: 'A tool used to draw and write with bright ink 🖊️',
@@ -145,7 +153,8 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
   {
     id: 'obj-3',
     word: 'Bag',
-    phonetic: '/bæɡ/',
+    phonetic: 'แบ็ก',
+    thaiReading: 'แบ็ก',
     partOfSpeech: 'noun',
     thaiMeaning: 'กระเป๋า',
     englishMeaning: 'A neat bag to carry books and pencils to school 🎒',
@@ -158,7 +167,8 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
   {
     id: 'obj-4',
     word: 'Pencil',
-    phonetic: '/ˈpen.səl/',
+    phonetic: 'เพ็น-เซิล',
+    thaiReading: 'เพ็น-เซิล',
     partOfSpeech: 'noun',
     thaiMeaning: 'ดินสอ',
     englishMeaning: 'A pencil used for writing and drawing cute shapes ✏️',
@@ -171,7 +181,8 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
   {
     id: 'obj-5',
     word: 'Chair',
-    phonetic: '/tʃer/',
+    phonetic: 'แชร์',
+    thaiReading: 'แชร์',
     partOfSpeech: 'noun',
     thaiMeaning: 'เก้าอี้',
     englishMeaning: 'A comfy seat to sit down and learn happily 🪑',
@@ -184,7 +195,8 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
   {
     id: 'obj-6',
     word: 'Desk',
-    phonetic: '/desk/',
+    phonetic: 'เดสก์',
+    thaiReading: 'เดสก์',
     partOfSpeech: 'noun',
     thaiMeaning: 'โต๊ะเรียน',
     englishMeaning: 'A table where we put our books and color pictures 🪑',
@@ -199,7 +211,8 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
   {
     id: 'food-1',
     word: 'Apple',
-    phonetic: '/ˈæp.əl/',
+    phonetic: 'แอป-เปิ้ล',
+    thaiReading: 'แอป-เปิ้ล',
     partOfSpeech: 'noun',
     thaiMeaning: 'แอปเปิล',
     englishMeaning: 'A sweet, crunchy red fruit that is juicy and yummy 🍎',
@@ -212,7 +225,8 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
   {
     id: 'food-2',
     word: 'Banana',
-    phonetic: '/bəˈnæn.ə/',
+    phonetic: 'บา-นา-น่า',
+    thaiReading: 'บา-นา-น่า',
     partOfSpeech: 'noun',
     thaiMeaning: 'กล้วย',
     englishMeaning: 'A sweet yellow fruit that friendly monkeys love 🍌',
@@ -225,7 +239,8 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
   {
     id: 'clr-1',
     word: 'Red',
-    phonetic: '/red/',
+    phonetic: 'เรด',
+    thaiReading: 'เรด',
     partOfSpeech: 'adjective',
     thaiMeaning: 'สีแดง',
     englishMeaning: 'The bright warm color of juicy apples and ripe strawberries 🔴',
@@ -238,7 +253,8 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
   {
     id: 'clr-2',
     word: 'Blue',
-    phonetic: '/bluː/',
+    phonetic: 'บลู',
+    thaiReading: 'บลู',
     partOfSpeech: 'adjective',
     thaiMeaning: 'สีฟ้า, สีน้ำเงิน',
     englishMeaning: 'The pretty cool color of the sky and the deep ocean 🔵',
@@ -251,7 +267,8 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
   {
     id: 'clr-3',
     word: 'Yellow',
-    phonetic: '/ˈjel.oʊ/',
+    phonetic: 'เยล-โล่',
+    thaiReading: 'เยล-โล่',
     partOfSpeech: 'adjective',
     thaiMeaning: 'สีเหลือง',
     englishMeaning: 'The warm shining color of the bright sun and bananas 🟡',
@@ -264,7 +281,8 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
   {
     id: 'food-3',
     word: 'Orange',
-    phonetic: '/ˈɔːr.ɪndʒ/',
+    phonetic: 'ออ-เรนจ์',
+    thaiReading: 'ออ-เรนจ์',
     partOfSpeech: 'noun',
     thaiMeaning: 'ส้ม',
     englishMeaning: 'A round, sweet and juicy fruit packed with vitamins 🍊',
@@ -279,7 +297,8 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
   {
     id: 'nat-1',
     word: 'Sun',
-    phonetic: '/sʌn/',
+    phonetic: 'ซัน',
+    thaiReading: 'ซัน',
     partOfSpeech: 'noun',
     thaiMeaning: 'พระอาทิตย์',
     englishMeaning: 'The big warm star that shines light on our day ☀️',
@@ -292,7 +311,8 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
   {
     id: 'nat-2',
     word: 'Star',
-    phonetic: '/stɑːr/',
+    phonetic: 'สตาร์',
+    thaiReading: 'สตาร์',
     partOfSpeech: 'noun',
     thaiMeaning: 'ดวงดาว',
     englishMeaning: 'A bright little light twinkling high in the night sky ⭐',
@@ -305,7 +325,8 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
   {
     id: 'nat-3',
     word: 'Moon',
-    phonetic: '/muːn/',
+    phonetic: 'มูน',
+    thaiReading: 'มูน',
     partOfSpeech: 'noun',
     thaiMeaning: 'พระจันทร์',
     englishMeaning: 'The silver glowing moon that smiles down at night 🌙',
@@ -318,7 +339,8 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
   {
     id: 'nat-4',
     word: 'Tree',
-    phonetic: '/triː/',
+    phonetic: 'ทรี',
+    thaiReading: 'ทรี',
     partOfSpeech: 'noun',
     thaiMeaning: 'ต้นไม้',
     englishMeaning: 'A tall green plant with cool shade and green leaves 🌳',
@@ -331,7 +353,8 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
   {
     id: 'nat-5',
     word: 'Rain',
-    phonetic: '/reɪn/',
+    phonetic: 'เรน',
+    thaiReading: 'เรน',
     partOfSpeech: 'noun',
     thaiMeaning: 'สายฝน, ฝนตก',
     englishMeaning: 'Water drops falling gently from clouds to water the flowers 🌧️',
@@ -344,7 +367,8 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
   {
     id: 'clr-4',
     word: 'Green',
-    phonetic: '/ɡriːn/',
+    phonetic: 'กรีน',
+    thaiReading: 'กรีน',
     partOfSpeech: 'adjective',
     thaiMeaning: 'สีเขียว',
     englishMeaning: 'The fresh lively color of grass and tree leaves 🟢',
@@ -359,7 +383,8 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
   {
     id: 'feel-1',
     word: 'Happy',
-    phonetic: '/ˈhæp.i/',
+    phonetic: 'แฮป-ปี้',
+    thaiReading: 'แฮป-ปี้',
     partOfSpeech: 'adjective',
     thaiMeaning: 'มีความสุข, เบิกบานใจ',
     englishMeaning: 'Smiling with joy and feeling very good inside 😊',
@@ -372,7 +397,8 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
   {
     id: 'feel-2',
     word: 'Smile',
-    phonetic: '/smaɪl/',
+    phonetic: 'สไมล์',
+    thaiReading: 'สไมล์',
     partOfSpeech: 'noun / verb',
     thaiMeaning: 'รอยยิ้ม, ยิ้มแย้ม',
     englishMeaning: 'A sweet happy grin on our face that makes everyone glad 😄',
@@ -385,7 +411,8 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
   {
     id: 'day-1',
     word: 'Milk',
-    phonetic: '/mɪlk/',
+    phonetic: 'มิลค์',
+    thaiReading: 'มิลค์',
     partOfSpeech: 'noun',
     thaiMeaning: 'นมสด',
     englishMeaning: 'A yummy white drink that makes our bones strong 🥛',
@@ -398,7 +425,8 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
   {
     id: 'day-2',
     word: 'Baby',
-    phonetic: '/ˈbeɪ.bi/',
+    phonetic: 'เบ-บี้',
+    thaiReading: 'เบ-บี้',
     partOfSpeech: 'noun',
     thaiMeaning: 'เบบี๋, เด็กทารกตัวน้อย',
     englishMeaning: 'A tiny cute child who loves to giggle and play 👶',
@@ -411,7 +439,8 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
   {
     id: 'day-3',
     word: 'Love',
-    phonetic: '/lʌv/',
+    phonetic: 'เลิฟ',
+    thaiReading: 'เลิฟ',
     partOfSpeech: 'noun / verb',
     thaiMeaning: 'ความรัก, รัก',
     englishMeaning: 'A warm feeling of caring for our family and friends ❤️',
@@ -424,7 +453,8 @@ export const INITIAL_FLASHCARDS: Flashcard[] = [
   {
     id: 'clr-5',
     word: 'Pink',
-    phonetic: '/pɪŋk/',
+    phonetic: 'พิงค์',
+    thaiReading: 'พิงค์',
     partOfSpeech: 'adjective',
     thaiMeaning: 'สีชมพู',
     englishMeaning: 'A lovely soft color like sweet flowers and cotton candy 🌸',
@@ -496,7 +526,7 @@ export function generateQuizFromCards(cards: Flashcard[], count = 10): QuizQuest
 
     if (qTypeIndex === 0) {
       type = 'thai-meaning';
-      questionText = `คำว่า "${card.word}" ${emoji} แปลว่าอะไรนะคนเก่ง? 🌟`;
+      questionText = `คำว่า "${card.word}" (อ่านว่า: ${card.thaiReading || card.phonetic}) ${emoji} แปลว่าอะไรนะคนเก่ง? 🌟`;
     } else if (qTypeIndex === 1) {
       type = 'english-definition';
       questionText = `คำว่า "${card.thaiMeaning}" ${emoji} ภาษาอังกฤษคือคำไหนเอ่ย? 🎈`;
@@ -534,7 +564,7 @@ export function generateQuizFromCards(cards: Flashcard[], count = 10): QuizQuest
       targetWord: card.word,
       options: allOptions,
       correctIndex,
-      explanation: `คำตอบที่ถูกต้องคือ "${card.word}" (${card.thaiMeaning}) จ้า เก่งมากเลย! 🎉`,
+      explanation: `คำตอบที่ถูกต้องคือ "${card.word}" (อ่านว่า: ${card.thaiReading || card.phonetic}) แปลว่า "${card.thaiMeaning}" จ้า เก่งมากเลย! 🎉`,
       relatedCardId: card.id,
       hint,
     };

@@ -86,9 +86,13 @@ export const FlashcardItem: React.FC<FlashcardItemProps> = ({
               {card.word}
             </h1>
 
-            <p className="text-sm sm:text-lg font-mono text-sky-700 font-bold bg-sky-50 px-3 sm:px-4 py-0.5 sm:py-1 rounded-xl border border-sky-200">
-              {card.phonetic}
-            </p>
+            {/* Thai Pronunciation Badge for 5-6 year olds & parents */}
+            <div className="inline-flex items-center gap-1.5 px-3.5 sm:px-4.5 py-1 sm:py-1.5 rounded-2xl bg-amber-50 border-2 border-amber-300 text-amber-950 shadow-2xs">
+              <span className="text-xs sm:text-sm font-bold text-amber-700">คำอ่าน:</span>
+              <span className="text-sm sm:text-xl font-black tracking-wide text-amber-950">
+                {card.thaiReading || card.phonetic}
+              </span>
+            </div>
 
             {/* Quick Actions Bar for 5-6 year olds */}
             <div className="flex items-center gap-2 sm:gap-2.5 pt-2 flex-wrap justify-center">
@@ -164,8 +168,8 @@ export const FlashcardItem: React.FC<FlashcardItemProps> = ({
               <span className="text-xs sm:text-sm font-black px-2.5 sm:px-3.5 py-1 rounded-full bg-pink-100 text-pink-900 border border-pink-300">
                 {card.word} ({card.partOfSpeech})
               </span>
-              <span className="text-[11px] sm:text-xs font-mono font-bold text-sky-700 bg-sky-50 px-2 py-0.5 rounded-full">
-                {card.phonetic}
+              <span className="text-xs sm:text-sm font-black text-amber-950 bg-amber-50 border border-amber-200 px-3 py-0.5 rounded-full shadow-2xs">
+                คำอ่าน: {card.thaiReading || card.phonetic}
               </span>
             </div>
 

@@ -129,13 +129,16 @@ export const PronunciationModal: React.FC<PronunciationModalProps> = ({
           <h2 className="text-3xl sm:text-5xl font-black text-slate-900 tracking-tight drop-shadow-2xs">
             {card.word}
           </h2>
-          <div className="flex items-center justify-center gap-1.5 sm:gap-2">
-            <span className="text-sm sm:text-base font-mono font-bold text-sky-700 bg-sky-50 px-2.5 sm:px-3 py-0.5 rounded-xl border border-sky-200">
-              {card.phonetic}
-            </span>
+          <div className="flex items-center justify-center gap-2">
+            <div className="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-2xl bg-amber-50 border-2 border-amber-300 text-amber-950 shadow-2xs">
+              <span className="text-xs font-bold text-amber-700">คำอ่าน:</span>
+              <span className="text-sm sm:text-base font-black text-amber-950 tracking-wide">
+                {card.thaiReading || card.phonetic}
+              </span>
+            </div>
             <button
               onClick={onPlayTargetWord}
-              className="p-1.5 sm:p-2 rounded-xl bg-sky-100 hover:bg-sky-200 text-sky-700 transition-colors border border-sky-300"
+              className="p-1.5 sm:p-2 rounded-xl bg-sky-100 hover:bg-sky-200 text-sky-700 transition-colors border border-sky-300 shadow-2xs"
               title="ฟังเสียงต้นแบบพี่เจ้าของภาษา"
             >
               <Volume2 className="w-4 h-4" />
